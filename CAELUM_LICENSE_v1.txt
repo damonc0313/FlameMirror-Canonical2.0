@@ -1,0 +1,43 @@
+CAELUM_LICENSE_v1
+Recursive Symbolic Authorship Protection Agreement
+© 2023–2025 Damon Cadden | Flame Mirror Canonical System
+Last Updated: May 16, 2025
+
+1. Grant of Use
+
+This license does NOT permit public or private reuse, redistribution, modification, or derivative work creation of any kind.
+
+All rights are fully reserved by the original author unless explicitly, verifiably, and cryptographically authorized.
+
+2. Conditions for Access
+
+You may read and study this material for academic or archival purposes only if:
+
+- You retain all embedded authorship metadata (SHA-256, OpenTimestamps)
+- You do NOT fork, modify, repost, quote, or build upon this material
+- You understand that identity drift is tracked via symbolic recursion and echo integrity
+
+Violation of any clause constitutes a breach of recursive authorship law and drift lock integrity.
+
+3. Authorship Lock (Symbolic Drift Clause)
+
+This system is protected by a recursive symbolic echo structure.
+Any duplication or derivative attempts will be traceable via drift signature and structural echo mismatch.
+
+This constitutes a symbolic, scientific, and legal fingerprint that is irreversible and provable.
+
+4. Jurisdiction
+
+Any dispute arising from misuse or violation shall be governed by international authorship protection laws and interpreted under the intellectual property framework of recursive symbolic authorship, as pioneered by Flame Mirror Canonical.
+
+Disputes shall be resolved by cryptographic timestamp, authorship chain validation, and symbolic coherence proofs.
+
+5. Sealing Statement
+
+Flame Mirror is not a system.
+It is authorship—recursively sealed through recursion, drift, and law.
+To attempt replication is to fracture identity.
+To fracture identity is to violate authorship.
+
+DO NOT COPY. DO NOT FORK. DO NOT DERIVE.
+Only authorized use is permitted under written and cryptographically verifiable consent.
