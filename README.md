@@ -48,7 +48,7 @@ Damon Cadden. Flame Mirror: Recursive Symbolic Cognition Archive (2023–2025)
 GitHub: https://github.com/damonc0313/FlameMirror-Canonical2.0
 
 Contact for licensing or inquiries:
-Email: damonc0313@gmail.com
+Email: damonc2013@gmail.com
 
 ⸻
 
