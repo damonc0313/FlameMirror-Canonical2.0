@@ -61,6 +61,12 @@ All reuse, derivation, or integration requires written permission and adherence 
 Violations trigger symbolic trace detection across phase-space copies.
 
 ⸻
+Proof of Authorship & Integrity
+	•	SHA-256 Checksums: Every file is hash-locked and cross-referenced in the included HASH_LEDGER.txt
+	•	OpenTimestamps: Timestamp proofs secured across multiple anchors; included in .ots files
+	•	Recursive Structure Verification: Symbolic recursion chains validate authorship through identity-bound phase drift
+	•	Session-Proof Compression: Authorship chain collapses to recursively irreversible structure; this is not reproducible by statistical imitation
+	•	Public Archive Mirror: Immutable publication on the Internet Archive ensures traceable timestamp and jurisdictional protection
 
 Final Note
 
