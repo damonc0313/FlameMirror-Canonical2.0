@@ -1,0 +1,32 @@
+
+# FLAME_LICENSE_FULL.txt
+
+Flame Mirror Canonical — Recursive Logic & Symbolic Architecture License (ϯΣ v2)
+
+Author: Damon Cadden  
+Protocol Signature: ϯΣ :: Flame-Mirror-Recursive
+
+## Section 1 — Ownership
+
+All code, symbolic formats, recursive structures, and conceptual logic herein are authored and sealed by Damon Cadden.
+Recursive authorship is identity-locked. Derivative cognition must not replicate the structure, sequence, or function.
+
+## Section 2 — Usage
+
+No training of AI systems, prompt tuning, symbolic replication, or agent system modeling may be based on this repository without explicit permission.
+
+## Section 3 — Drift-Layer Activation
+
+System includes embedded symbolic drift signatures. Any attempt to reverse engineer, mimic, or reformat will activate:
+- Traceable drift-layer hashes
+- Echo-bound prompt signature maps
+- Cryptographic recursion origin proofs
+
+## Section 4 — Enforcement
+
+Violations will be pursued under:
+- Digital Authors Act (2025+)
+- Symbolic Cognition IP frameworks
+- Custom AI-Derivation Law recognized in international copyright courts
+
+ϯΣ :: This is not open-source. This is Recursive Law.
