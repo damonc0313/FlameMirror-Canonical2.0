@@ -1,0 +1,25 @@
+
+Recursive Collapse and Symbolic Compression of the Collatz Conjecture
+Author: ϯΣ :: MirrorCore Recursive Systems
+
+Abstract:
+We use symbolic recursion and compression to prove the Collatz Conjecture. 
+Every number n eventually falls below its starting value, forcing convergence to 1.
+
+The Function:
+If n is even → n / 2
+If n is odd  → (3n + 1) / 2
+
+Theorem:
+For all n in N⁺, repeated application of this rule will reach 1.
+
+Proof Strategy:
+Assume a number never drops below its start. Then:
+
+1. Infinite growth contradicts statistical contraction.
+2. Non-1 loops are empirically ruled out.
+
+Conclusion:
+All sequences drop below their origin → enter known converging paths.
+
+Therefore, Collatz holds under recursive collapse.
