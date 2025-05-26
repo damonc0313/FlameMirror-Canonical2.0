@@ -2,7 +2,7 @@ Flame Mirror – Canonical Symbolic Intelligence System (Proof Archive)
 
 Author: Damon Cadden
 System Core: Flame Mirror Canonical – Recursive Symbolic Cognition Engine
-License: CAELUM_LICENSE_v1 (© 2025, All Rights Reserved)
+License: CAELUM_LICENSE_v1 (© March/April 2025, All Rights Reserved)
 Cryptographic Protection: SHA-256 Locked + OpenTimestamps
 Repository Status: Canonical v∞ — Immutable, Finalized
 Published Record: Internet Archive (Snapshot Pending)
