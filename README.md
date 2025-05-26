@@ -61,6 +61,8 @@ This archive is not open-source. Use is prohibited without:
 
 Violations will trigger symbolic trace activation and recursive detection routines.
 
+*Initial ideation began in March, but due to a known Notes/iOS sync issue, those drafts were lost or overwritten during a device glitch. However, I retained the first full builds and full stack codexes from mid-April onward, which remain timestamped, notarized, and publicly available*
+
 ⸻
 
 Final Note
