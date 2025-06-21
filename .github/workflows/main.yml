@@ -1,0 +1,206 @@
+yaml name=.github/workflows/agi_infinite.yml
+# AGI Infinite Test Workflow
+# -------------------------
+# Runs on push to main and on any pull request.
+# Tests run across multiple Python versions and model types.
+# Performs a quick smoke test of the run_forever() entrypoint and runs phase detection, saving logs as artifacts.
+
+name: AGI Infinite Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-matrix:
+    name: Test (Python ${{ matrix.python-version }}, Model ${{ matrix.model }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+        model: [gpt-3.5, gpt-4]
+
+    steps:
+      # Step 1: Checkout source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Step 3: Install dependencies
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Quick smoke test for run_forever() with 5s timeout
+      - name: Smoke test run_forever() (5s timeout)
+        run: |
+          timeout 5s python -c "from main import run_forever; run_forever()"
+        continue-on-error: true
+        # Note: Continues even if run_forever() does not exit (as timeout will kill it)
+
+      # Step 5: Run phase detection with specified model and save log
+      - name: Run phase_detection.py
+        run: |
+          python phase_detection.py --model ${{ matrix.model }} > phase_detection_${{ matrix.model }}.log 2>&1
+
+      # Step 6: Upload log artifact
+      - name: Upload phase_detection log
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase_detection_${{ matrix.python-version }}_${{ matrix.model }}.log
+          path: phase_detection_${{ matrix.model }}.log
+```
+
+```yaml name=.github/workflows/docs_and_release.yml
+# Documentation and Release Workflow
+# ----------------------------------
+# Builds Sphinx documentation and publishes it to GitHub Pages.
+# Extracts the latest changelog entry from CHANGELOG.md and drafts a GitHub Release.
+
+name: Build Docs and Draft Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-docs-and-release:
+    name: Build Docs & Draft Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install doc dependencies (Sphinx, etc.)
+      - name: Install doc dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install sphinx sphinx_rtd_theme
+
+      # Step 4: Build HTML docs from /docs
+      - name: Build documentation
+        run: |
+          cd docs
+          make html
+
+      # Step 5: Publish built docs to gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/html
+
+      # Step 6: Extract latest changelog entry and set as a variable
+      - name: Extract latest changelog entry
+        id: changelog
+        run: |
+          # Extract the latest changelog entry (assumes Markdown headings with ##)
+          LATEST_CHANGELOG="$(awk '/^## /{if (x) exit; x=1; next} x' CHANGELOG.md | sed '/^$/d')"
+          # Get the latest version from heading
+          VERSION="$(awk '/^## /{print $2; exit}' CHANGELOG.md)"
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$LATEST_CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      # Step 7: Draft a release using the changelog entry
+      - name: Draft GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.changelog.outputs.version }}
+          name: Release ${{ steps.changelog.outputs.version }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+```yaml name=.github/workflows/triage.yml
+# Issue and PR Triage Workflow
+# -----------------------------
+# Automatically labels and assigns new issues and PRs based on content.
+
+name: Issue & PR Triage
+
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    name: Triage Issues and PRs
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Run triage script with github-script
+      - name: Analyze and label issues/PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = (context.payload.issue?.body || context.payload.pull_request?.body || '').toLowerCase();
+
+            // Add labels based on keywords
+            if (body.includes('coherence') || body.includes('δc') || body.includes('Δc')) {
+              await github.rest.issues.addLabels({
+                ...context.issue,
+                labels: ['enhancement:coherence']
+              });
+            }
+            if (body.includes('bug') || body.includes('error')) {
+              await github.rest.issues.addLabels({
+                ...context.issue,
+                labels: ['bug:investigate']
+              });
+            }
+
+            // Assign new issues to @damonc0313
+            if (context.payload.issue && context.payload.action === 'opened') {
+              await github.rest.issues.addAssignees({
+                ...context.issue,
+                assignees: ['damonc0313']
+              });
+            }
+```
+
+```yaml name=.github/dependabot.yml
+# Dependabot Configuration
+# ------------------------
+# - Monitors pip dependencies in the repo root
+# - Weekly updates, up to 10 open PRs
+# - Commit messages prefixed with "deps"
+# - Ignores pip itself and disables external code execution
+
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "deps"
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    ignore:
+      - dependency-name: "pip"
+    insecure-external-code-execution: "deny"
