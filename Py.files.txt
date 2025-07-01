@@ -1,0 +1,150 @@
+import json
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+from collections import defaultdict
+
+def analyze_cognithex_trace(trace_file_path="logs/cognithex_trace.jsonl"):
+    """
+    Reads the COGNITHEX trace file, parses its contents, and generates plots
+    of key metrics, anomalies, and fixes over audit steps.
+    """
+    if not os.path.exists(trace_file_path):
+        print(f"Error: Trace file not found at {trace_file_path}")
+        return
+
+    audit_data = []
+    try:
+        with open(trace_file_path, 'r') as f:
+            for line in f:
+                audit_data.append(json.loads(line))
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON from trace file: {e}")
+        print("Please ensure the trace file contains valid JSON objects on each line.")
+        return
+
+    if not audit_data:
+        print("No data found in the trace file to analyze.")
+        return
+
+    # Extracting data for plotting
+    audit_steps = [entry['audit_step'] for entry in audit_data]
+    mean_rewards = [entry['metrics']['mean_episode_reward'] for entry in audit_data]
+    policy_losses = [entry['metrics']['policy_loss'] for entry in audit_data]
+    entropy_losses = [entry['metrics']['entropy_loss'] for entry in audit_data]
+    value_losses = [entry['metrics']['value_loss'] for entry in audit_data]
+    delta_Cs = [entry['delta_C'] for entry in audit_data]
+
+    # For visualizing anomalies and fixes
+    anomaly_events = defaultdict(list) # {anomaly_type: [audit_step, ...]}
+    fix_events = defaultdict(list)     # {fix_description: [audit_step, ...]}
+
+    for entry in audit_data:
+        step = entry['audit_step']
+        for anomaly in entry['anomaly_flags']:
+            anomaly_events[anomaly].append(step)
+        for fix in entry['fixes_applied']:
+            # Use a simplified fix string for grouping
+            if "Increased entropy_coef" in fix:
+                fix_key = "Increased entropy_coef"
+            elif "Decreased entropy_coef" in fix:
+                fix_key = "Decreased entropy_coef"
+            elif "Lowered learning rate" in fix:
+                fix_key = "Lowered learning rate"
+            elif "Enabled/Set gradient clipping" in fix:
+                fix_key = "Enabled/Set gradient Clipping"
+            elif "Applied in-memory patch" in fix and "reward" in fix:
+                fix_key = "Applied Reward Shaping Patch"
+            elif "Applied in-memory patch" in fix and "phase stddev" in fix:
+                fix_key = "Applied Quantum Phase Escalation"
+            elif "Rewrote config file" in fix:
+                fix_key = "Architectural Change (Restart)"
+            else:
+                fix_key = "Other Fix"
+            fix_events[fix_key].append(step)
+
+
+    # --- Plotting ---
+    plt.style.use('seaborn-v0_8-darkgrid')
+
+    fig, axs = plt.subplots(5, 1, figsize=(14, 25), sharex=True)
+    fig.suptitle('COGNITHEX Audit Trace Analysis', fontsize=18)
+
+    # Plot 1: Mean Episode Reward
+    axs[0].plot(audit_steps, mean_rewards, label='Mean Episode Reward', color='blue')
+    axs[0].set_ylabel('Reward', fontsize=12)
+    axs[0].set_title('Mean Episode Reward Over Time', fontsize=14)
+    axs[0].legend()
+
+    # Plot 2: Policy Loss
+    axs[1].plot(audit_steps, policy_losses, label='Policy Loss', color='red')
+    axs[1].set_ylabel('Loss', fontsize=12)
+    axs[1].set_title('Policy Loss Over Time', fontsize=14)
+    axs[1].legend()
+
+    # Plot 3: Entropy Loss
+    axs[2].plot(audit_steps, entropy_losses, label='Entropy Loss', color='green')
+    axs[2].set_ylabel('Entropy', fontsize=12)
+    axs[2].set_title('Entropy Loss Over Time', fontsize=14)
+    axs[2].legend()
+
+    # Plot 4: Value Loss
+    axs[3].plot(audit_steps, value_losses, label='Value Loss', color='purple')
+    axs[3].set_ylabel('Loss', fontsize=12)
+    axs[3].set_title('Value Loss Over Time', fontsize=14)
+    axs[3].legend()
+
+    # Plot 5: Delta C(t) Stability Metric
+    axs[4].plot(audit_steps, delta_Cs, label='Delta C(t) Stability', color='orange')
+    axs[4].axhline(y=1.0, color='gray', linestyle='--', linewidth=0.8, label='Perfect Stability (1.0)')
+    axs[4].set_ylabel('Delta C(t)', fontsize=12)
+    axs[4].set_title('Delta C(t) Stability Metric Over Time', fontsize=14)
+    axs[4].set_xlabel('Audit Step', fontsize=12)
+    axs[4].legend()
+
+
+    # Add anomaly and fix markers to all plots
+    # We collect all labels to avoid duplicates in the legend, then add them once.
+    all_handles, all_labels = [], []
+
+    # Anomaly flags
+    for anomaly_type, steps in anomaly_events.items():
+        if steps: # Ensure there are steps for this anomaly
+            for ax in axs:
+                ax.axvline(x=steps[0], color='red', linestyle=':', linewidth=1.5, alpha=0.6)
+            all_handles.append(plt.Line2D([0], [0], color='red', linestyle=':', linewidth=1.5, alpha=0.6))
+            all_labels.append(f'Anomaly: {anomaly_type}')
+
+    # Fixes applied
+    for fix_description, steps in fix_events.items():
+        if steps: # Ensure there are steps for this fix
+            for ax in axs:
+                ax.axvline(x=steps[0], color='green', linestyle='--', linewidth=1.5, alpha=0.6)
+            all_handles.append(plt.Line2D([0], [0], color='green', linestyle='--', linewidth=1.5, alpha=0.6))
+            all_labels.append(f'Fix: {fix_description}')
+
+    # Create a unified legend for the anomaly/fix markers
+    # Add it to a new subplot or a well-placed existing one
+    # For simplicity, we can create a dummy subplot for the legend
+    # or just use the last axis's legend
+
+    # Clean legends to avoid duplicate entries when adding axvlines
+    for ax in axs:
+        handles, labels = ax.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        ax.legend(by_label.values(), by_label.keys()) # Re-add original legends
+
+    # Create a shared legend for all anomaly/fix markers in a separate axes
+    # This requires a bit more matplotlib finesse to place outside all subplots cleanly
+    fig.legend(all_handles, all_labels, loc='center right', bbox_to_anchor=(0.99, 0.5), fontsize=10)
+
+    plt.tight_layout(rect=[0, 0.03, 0.85, 0.98]) # Adjust layout to make space for unified legend
+    plt.show()
+
+if __name__ == "__main__":
+    # Specify the path to your trace file
+    TRACE_FILE = "logs/cognithex_trace.jsonl"
+    # If your logs are elsewhere, update this path accordingly:
+    # TRACE_FILE = "/path/to/your/logs/cognithex_trace.jsonl"
+
+    analyze_cognithex_trace(TRACE_FILE)
