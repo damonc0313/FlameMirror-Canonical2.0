@@ -17,7 +17,6 @@ This repository contains the **first full symbolic proof** of the Collatz Conjec
 | `proof.tex` / `proof.pdf`     | Fully formalized LaTeX theorem, structured for academic review |
 | `collatz_proof.lean`          | Lean 4 logic scaffold for theorem verification |
 | `quantum_model.md`            | Quantum parity resonance & entropy collapse theory |
-| `simulations/collatz_test.py` | Brute-force + symbolic trace audit tool |
 | `simulations/entropy_map.png` | Convergence entropy decay diagram |
 | `logs.json`                   | Symbolic verification logs |
 | `README.md`                   | This document |
