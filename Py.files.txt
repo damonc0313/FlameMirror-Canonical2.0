@@ -109,17 +109,19 @@ def analyze_cognithex_trace(trace_file_path="logs/cognithex_trace.jsonl"):
 
     # Anomaly flags
     for anomaly_type, steps in anomaly_events.items():
-        if steps: # Ensure there are steps for this anomaly
+        if steps:  # Ensure there are steps for this anomaly
             for ax in axs:
-                ax.axvline(x=steps[0], color='red', linestyle=':', linewidth=1.5, alpha=0.6)
+                for step in steps:
+                    ax.axvline(x=step, color='red', linestyle=':', linewidth=1.5, alpha=0.6)
             all_handles.append(plt.Line2D([0], [0], color='red', linestyle=':', linewidth=1.5, alpha=0.6))
             all_labels.append(f'Anomaly: {anomaly_type}')
 
     # Fixes applied
     for fix_description, steps in fix_events.items():
-        if steps: # Ensure there are steps for this fix
+        if steps:  # Ensure there are steps for this fix
             for ax in axs:
-                ax.axvline(x=steps[0], color='green', linestyle='--', linewidth=1.5, alpha=0.6)
+                for step in steps:
+                    ax.axvline(x=step, color='green', linestyle='--', linewidth=1.5, alpha=0.6)
             all_handles.append(plt.Line2D([0], [0], color='green', linestyle='--', linewidth=1.5, alpha=0.6))
             all_labels.append(f'Fix: {fix_description}')
 
