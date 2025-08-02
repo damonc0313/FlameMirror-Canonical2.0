@@ -34,7 +34,7 @@ Interpretation:
 
 ---
 
-##Example: Maximum Value in Array
+## Example: Maximum Value in Array
 
 ΔLang pseudocode:
 
