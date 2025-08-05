@@ -1,0 +1,2 @@
+[console_scripts]
+hash-verifier = hash_verifier:main
