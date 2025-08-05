@@ -363,7 +363,7 @@ class SwarmIntelligenceFabric:
                 'speciation_events': len(evolution_events['speciation']),
                 'merging_events': len(evolution_events['merging']),
                 'forking_events': len(evolution_events['forking']),
-                'network_changes': network_evolution['changes'],
+                'network_changes': network_evolution.get('new_connections', 0) + network_evolution.get('removed_connections', 0),
                 'performance_improvement': consensus_results['performance_improvement'],
                 'innovation_index': consensus_results['innovation_index']
             }
@@ -641,8 +641,11 @@ class SwarmIntelligenceFabric:
                 merged_agent = self._merge_agents(agent1, agent2)
                 if merged_agent:
                     self.agents.append(merged_agent)
-                    self.agents.remove(agent1)
-                    self.agents.remove(agent2)
+                    # Safely remove agents if they exist
+                    if agent1 in self.agents:
+                        self.agents.remove(agent1)
+                    if agent2 in self.agents:
+                        self.agents.remove(agent2)
                     evolution_events['merging'].append(merged_agent.agent_id)
         
         # Forking - agents create copies with variations

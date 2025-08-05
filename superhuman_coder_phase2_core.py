@@ -336,6 +336,7 @@ class SwarmAgent:
             function_id=str(uuid.uuid4()),
             name=f"fitness_{self.specialization}_{random.randint(1000, 9999)}",
             evaluation_logic=self._generate_fitness_logic(),
+            evaluation_function=None,  # Will use evaluation_logic instead
             creator_agent_id=self.agent_id,
             parent_function_ids=[],
             mutation_history=[],
@@ -354,15 +355,43 @@ class SwarmAgent:
         # Simple selection based on RSR properties and agent specialization
         if rsr.complexity_score > 0.8:
             # High complexity - use advanced mutation
-            return random.choice([op for op in self.mutation_operators if "advanced" in op.operator_type])
+            advanced_operators = [op for op in self.mutation_operators if "advanced" in op.operator_type]
+            if advanced_operators:
+                return random.choice(advanced_operators)
+        
+        # Fallback to any available operator
+        if self.mutation_operators:
+            return random.choice(self.mutation_operators)
         else:
-            # Low complexity - use basic mutation
-            return random.choice([op for op in self.mutation_operators if "basic" in op.operator_type])
+            # Create a default operator if none exist
+            default_operator = MetaMutator(
+                operator_id=str(uuid.uuid4()),
+                operator_type="default_mutation",
+                name="default_mutator",
+                mutation_logic={'type': 'default', 'rate': 0.01},
+                recombination_logic={'type': 'default', 'rate': 0.5},
+                language_mutation_logic={'type': 'default', 'rate': 0.1},
+                parent_operator_ids=[],
+                mutation_history=[],
+                fitness_history=[],
+                usage_count=0,
+                creator_agent_id=self.agent_id,
+                creation_timestamp=datetime.now(),
+                last_modified=datetime.now(),
+                generation=0
+            )
+            self.mutation_operators.append(default_operator)
+            return default_operator
     
     def _update_performance(self, rsr: RawStructureRepresentation):
         """Update agent performance based on RSR quality."""
         # Calculate performance improvement
-        performance_improvement = sum(rsr.fitness_metrics.values()) / len(rsr.fitness_metrics)
+        if rsr.fitness_metrics:
+            performance_improvement = sum(rsr.fitness_metrics.values()) / len(rsr.fitness_metrics)
+        else:
+            # Use complexity and compression as fallback metrics
+            performance_improvement = (rsr.complexity_score + rsr.compression_ratio) / 2.0
+        
         self.performance_history.append(performance_improvement)
         
         # Update innovation index
