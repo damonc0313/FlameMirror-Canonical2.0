@@ -73,7 +73,8 @@ def verify_hashes(csv_path: pathlib.Path, base_path: pathlib.Path | None = None)
     return results
 
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the hash verifier script."""
     import argparse
     import json
 
@@ -84,3 +85,7 @@ if __name__ == "__main__":
 
     result = verify_hashes(args.csv, args.base)
     print(json.dumps(result, indent=2))
+
+
+if __name__ == "__main__":
+    main()

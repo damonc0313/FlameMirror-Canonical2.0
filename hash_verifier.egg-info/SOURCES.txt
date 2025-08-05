@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.py
+hash_verifier/__init__.py
+hash_verifier.egg-info/PKG-INFO
+hash_verifier.egg-info/SOURCES.txt
+hash_verifier.egg-info/dependency_links.txt
+hash_verifier.egg-info/entry_points.txt
+hash_verifier.egg-info/requires.txt
+hash_verifier.egg-info/top_level.txt
+tests/test_hash_verifier.py
