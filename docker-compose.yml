@@ -1,0 +1,437 @@
+version: '3.8'
+
+services:
+  # Autonomous Agent - Main Service
+  autonomous-agent:
+    build:
+      context: .
+      target: production
+    container_name: autonomous-agent
+    restart: unless-stopped
+    environment:
+      - AUTONOMOUS_MODE=true
+      - LOG_LEVEL=INFO
+      - COVERAGE_THRESHOLD=95
+      - MAX_CYCLES=1000
+      - AUTO_COMMIT=true
+      - AUTO_PUSH=true
+    volumes:
+      - ./logs:/app/logs
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./docs:/app/docs
+      - ./configs:/app/configs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development Environment
+  autonomous-dev:
+    build:
+      context: .
+      target: development
+    container_name: autonomous-dev
+    restart: unless-stopped
+    environment:
+      - AUTONOMOUS_MODE=true
+      - LOG_LEVEL=DEBUG
+      - COVERAGE_THRESHOLD=95
+      - MAX_CYCLES=10
+      - AUTO_COMMIT=true
+      - AUTO_PUSH=false
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    ports:
+      - "8001:8000"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - autonomous-network
+    profiles:
+      - dev
+
+  # API Server
+  api-server:
+    build:
+      context: .
+      target: api-server
+    container_name: autonomous-api
+    restart: unless-stopped
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+    ports:
+      - "8002:8000"
+    depends_on:
+      - autonomous-agent
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Testing Environment
+  testing:
+    build:
+      context: .
+      target: testing
+    container_name: autonomous-testing
+    environment:
+      - PYTHONPATH=/app/src
+      - COVERAGE_THRESHOLD=95
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - autonomous-network
+    profiles:
+      - test
+
+  # Documentation Generator
+  docs:
+    build:
+      context: .
+      target: documentation
+    container_name: autonomous-docs
+    environment:
+      - DOCS_OUTPUT_DIR=/app/docs/_build/html
+    volumes:
+      - .:/app
+      - ./docs/_build:/app/docs/_build
+    networks:
+      - autonomous-network
+    profiles:
+      - docs
+
+  # Security Scanner
+  security:
+    build:
+      context: .
+      target: security
+    container_name: autonomous-security
+    environment:
+      - SCAN_DIR=/app/src
+      - OUTPUT_FILE=/app/security-report.json
+    volumes:
+      - .:/app
+      - ./reports:/app/reports
+    networks:
+      - autonomous-network
+    profiles:
+      - security
+
+  # Performance Profiler
+  profiling:
+    build:
+      context: .
+      target: profiling
+    container_name: autonomous-profiling
+    environment:
+      - PROFILE_MODE=true
+      - OUTPUT_DIR=/app/profiles
+    volumes:
+      - .:/app
+      - ./profiles:/app/profiles
+    networks:
+      - autonomous-network
+    profiles:
+      - profiling
+
+  # Machine Learning Training
+  ml-training:
+    build:
+      context: .
+      target: ml-training
+    container_name: autonomous-ml
+    environment:
+      - ML_MODE=training
+      - MODEL_DIR=/app/models
+      - DATA_DIR=/app/data
+    volumes:
+      - .:/app
+      - ./models:/app/models
+      - ./data:/app/data
+    networks:
+      - autonomous-network
+    profiles:
+      - ml
+
+  # Monitoring Service
+  monitoring:
+    build:
+      context: .
+      target: monitoring
+    container_name: autonomous-monitoring
+    restart: unless-stopped
+    environment:
+      - MONITORING_PORT=9090
+      - METRICS_PATH=/metrics
+    volumes:
+      - ./logs:/app/logs
+      - ./metrics:/app/metrics
+    ports:
+      - "9090:9090"
+    depends_on:
+      - autonomous-agent
+    networks:
+      - autonomous-network
+
+  # Redis - Cache and Message Queue
+  redis:
+    image: redis:7-alpine
+    container_name: autonomous-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # PostgreSQL - Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: autonomous-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=autonomous
+      - POSTGRES_USER=autonomous
+      - POSTGRES_PASSWORD=autonomous_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U autonomous -d autonomous"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MongoDB - Document Database
+  mongodb:
+    image: mongo:6
+    container_name: autonomous-mongodb
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=autonomous
+      - MONGO_INITDB_ROOT_PASSWORD=autonomous_password
+      - MONGO_INITDB_DATABASE=autonomous
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Elasticsearch - Search Engine
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: autonomous-elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Kibana - Log Visualization
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.0
+    container_name: autonomous-kibana
+    restart: unless-stopped
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - autonomous-network
+    profiles:
+      - monitoring
+
+  # Prometheus - Metrics Collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: autonomous-prometheus
+    restart: unless-stopped
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - autonomous-network
+    profiles:
+      - monitoring
+
+  # Grafana - Metrics Visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: autonomous-grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./configs/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./configs/grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - prometheus
+    networks:
+      - autonomous-network
+    profiles:
+      - monitoring
+
+  # Nginx - Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: autonomous-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./configs/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./configs/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - autonomous-agent
+      - api-server
+    networks:
+      - autonomous-network
+    profiles:
+      - production
+
+  # Celery Worker - Background Tasks
+  celery-worker:
+    build:
+      context: .
+      target: production
+    container_name: autonomous-celery-worker
+    restart: unless-stopped
+    command: ["celery", "-A", "src.tasks.celery_app", "worker", "--loglevel=info"]
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+    networks:
+      - autonomous-network
+    profiles:
+      - production
+
+  # Celery Beat - Scheduled Tasks
+  celery-beat:
+    build:
+      context: .
+      target: production
+    container_name: autonomous-celery-beat
+    restart: unless-stopped
+    command: ["celery", "-A", "src.tasks.celery_app", "beat", "--loglevel=info"]
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+    networks:
+      - autonomous-network
+    profiles:
+      - production
+
+  # Flower - Celery Monitoring
+  flower:
+    build:
+      context: .
+      target: production
+    container_name: autonomous-flower
+    restart: unless-stopped
+    command: ["celery", "-A", "src.tasks.celery_app", "flower", "--port=5555"]
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - celery-worker
+    networks:
+      - autonomous-network
+    profiles:
+      - production
+
+volumes:
+  redis-data:
+    driver: local
+  postgres-data:
+    driver: local
+  mongodb-data:
+    driver: local
+  elasticsearch-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+
+networks:
+  autonomous-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

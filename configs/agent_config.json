@@ -1,0 +1,16 @@
+{
+  "language": "python",
+  "framework": "fastapi",
+  "test_framework": "pytest",
+  "coverage_threshold": 95.0,
+  "max_file_size": 1000,
+  "max_cycles_per_session": 100,
+  "auto_commit": true,
+  "auto_push": true,
+  "enable_ml_components": true,
+  "enable_api_components": true,
+  "enable_cli_components": true,
+  "security_scanning": true,
+  "performance_monitoring": true,
+  "documentation_auto_generation": true
+}
