@@ -2,6 +2,8 @@
 """
 Setup script for Massive Scale Autonomous Evolution System
 Billion-Parameter, Million-Line Autonomous Code Evolution
+
+PROPRIETARY SOFTWARE - ALL RIGHTS RESERVED
 """
 
 from setuptools import setup, find_packages
@@ -30,9 +32,9 @@ except FileNotFoundError:
 setup(
     name="massive-scale-evolution",
     version="1.0.0",
-    author="AI Research Team",
-    author_email="research@example.com",
-    description="Billion-Parameter, Million-Line Autonomous Code Evolution System",
+    author="Proprietary AI Research Team",
+    author_email="licensing@example.com",
+    description="Billion-Parameter, Million-Line Autonomous Code Evolution System (PROPRIETARY)",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/massive-scale-evolution",
@@ -41,7 +43,7 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
+        "License :: Other/Proprietary License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
@@ -52,6 +54,7 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Software Development :: Code Generators",
         "Topic :: System :: Distributed Computing",
+        "Private :: Do Not Upload",
     ],
     python_requires=">=3.8",
     install_requires=requirements,
@@ -89,7 +92,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     keywords=[
-        "autonomous-ai",
+        "proprietary-ai",
         "billion-parameters",
         "evolutionary-algorithms",
         "distributed-computing",
@@ -102,13 +105,16 @@ setup(
         "quality-diversity",
         "pareto-optimization",
         "autonomous-systems",
-        "phd-research",
-        "scientific-computing"
+        "proprietary-research",
+        "scientific-computing",
+        "all-rights-reserved"
     ],
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/massive-scale-evolution/issues",
+        "Licensing Inquiries": "https://github.com/yourusername/massive-scale-evolution/issues",
         "Source": "https://github.com/yourusername/massive-scale-evolution",
         "Documentation": "https://github.com/yourusername/massive-scale-evolution/blob/main/README.md",
-        "Research Paper": "https://github.com/yourusername/massive-scale-evolution/blob/main/docs/",
+        "Commercial Licensing": "https://github.com/yourusername/massive-scale-evolution/blob/main/LICENSE",
     },
+    license="All Rights Reserved",
+    license_files=["LICENSE"],
 )
