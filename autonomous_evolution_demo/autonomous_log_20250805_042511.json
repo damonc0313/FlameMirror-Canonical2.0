@@ -1,0 +1,2231 @@
+[
+  {
+    "timestamp": "2025-08-05T04:25:11.685218",
+    "state": "initializing",
+    "action": "evolution_start",
+    "details": {
+      "target_files": [
+        "src/optimization_target.py",
+        "src/performance_critical.py",
+        "src/algorithm_core.py",
+        "src/data_processor.py"
+      ],
+      "max_iterations": 15
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.685344",
+    "state": "analyzing",
+    "action": "state_transition",
+    "details": {
+      "from_state": "initializing",
+      "to_state": "analyzing"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.685454",
+    "state": "analyzing",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 1
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.686286",
+    "state": "analyzing",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.687060",
+    "state": "analyzing",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.668562635498413,
+        "mutation_potential": 0.5522090700434302,
+        "estimated_benefit": 0.21460523093472517,
+        "risk_assessment": 0.17802024292804847
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.687409",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "analyzing",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.687712",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.668562635498413,
+        "mutation_potential": 0.5522090700434302,
+        "estimated_benefit": 0.21460523093472517,
+        "risk_assessment": 0.17802024292804847
+      },
+      "selection_method": "random"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:11.688054",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "5a6f9bfc",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.022020",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "5a6f9bfc",
+      "success": false,
+      "fitness_score": 0.3355496737110927,
+      "execution_time": 0.33394479751586914
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.022282",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.023084",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "5a6f9bfc"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.023837",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.47,
+      "total_mutations": 1
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.024348",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.024840",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.3355496737110927,
+      "success_rate": 0.0,
+      "total_mutations": 1,
+      "recent_performance": 0.3355496737110927,
+      "performance_trend": "stable",
+      "best_mutation": "5a6f9bfc",
+      "best_fitness": 0.3355496737110927
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.025587",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 1,
+      "current_fitness": {
+        "overall_fitness": 0.3355496737110927,
+        "success_rate": 0.0,
+        "total_mutations": 1,
+        "recent_performance": 0.3355496737110927,
+        "performance_trend": "stable",
+        "best_mutation": "5a6f9bfc",
+        "best_fitness": 0.3355496737110927
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.026537",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 2
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.027338",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.028224",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.588107809492207,
+        "mutation_potential": 0.7752793892265111,
+        "estimated_benefit": 0.4806968378191637,
+        "risk_assessment": 0.3995985148474822
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.028697",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.029230",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.588107809492207,
+        "mutation_potential": 0.7752793892265111,
+        "estimated_benefit": 0.4806968378191637,
+        "risk_assessment": 0.3995985148474822
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.030268",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "d83924a0",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.189056",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "d83924a0",
+      "success": true,
+      "fitness_score": 0.8910485416157152,
+      "execution_time": 0.15877246856689453
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.189361",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.190357",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "d83924a0"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.191191",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.5121048541615715,
+      "total_mutations": 2
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.191898",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.192397",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.613299107663404,
+      "success_rate": 0.5,
+      "total_mutations": 2,
+      "recent_performance": 0.613299107663404,
+      "performance_trend": "stable",
+      "best_mutation": "d83924a0",
+      "best_fitness": 0.8910485416157152
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.193117",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 2,
+      "current_fitness": {
+        "overall_fitness": 0.613299107663404,
+        "success_rate": 0.5,
+        "total_mutations": 2,
+        "recent_performance": 0.613299107663404,
+        "performance_trend": "stable",
+        "best_mutation": "d83924a0",
+        "best_fitness": 0.8910485416157152
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.194111",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 3
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.195221",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.195875",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.7415247246766883,
+        "mutation_potential": 0.685137713031323,
+        "estimated_benefit": 0.6656725696976435,
+        "risk_assessment": 0.446044149683989
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.196517",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.196972",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.7415247246766883,
+        "mutation_potential": 0.685137713031323,
+        "estimated_benefit": 0.6656725696976435,
+        "risk_assessment": 0.446044149683989
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.197596",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "a6c2f43a",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.533389",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "a6c2f43a",
+      "success": false,
+      "fitness_score": 0.20727488209655595,
+      "execution_time": 0.3357696533203125
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.533877",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.534807",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "a6c2f43a"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.539175",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.48210485416157145,
+      "total_mutations": 3
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.540089",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.540614",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.47795769914112124,
+      "success_rate": 0.3333333333333333,
+      "total_mutations": 3,
+      "recent_performance": 0.47795769914112124,
+      "performance_trend": "stable",
+      "best_mutation": "d83924a0",
+      "best_fitness": 0.8910485416157152
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.541154",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 3,
+      "current_fitness": {
+        "overall_fitness": 0.47795769914112124,
+        "success_rate": 0.3333333333333333,
+        "total_mutations": 3,
+        "recent_performance": 0.47795769914112124,
+        "performance_trend": "stable",
+        "best_mutation": "d83924a0",
+        "best_fitness": 0.8910485416157152
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.541685",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 4
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.542247",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.542787",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.8220042402997401,
+        "mutation_potential": 0.5727257610297689,
+        "estimated_benefit": 0.28230823320983445,
+        "risk_assessment": 0.1894650571502238
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.543299",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.543839",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.8220042402997401,
+        "mutation_potential": 0.5727257610297689,
+        "estimated_benefit": 0.28230823320983445,
+        "risk_assessment": 0.1894650571502238
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.544248",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "2d141a4c",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.694543",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "2d141a4c",
+      "success": false,
+      "fitness_score": 0.38708895861253967,
+      "execution_time": 0.1502702236175537
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.695047",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.696056",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "2d141a4c"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.696725",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.4521048541615714,
+      "total_mutations": 4
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.697373",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.698289",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.45524051400897586,
+      "success_rate": 0.25,
+      "total_mutations": 4,
+      "recent_performance": 0.45524051400897586,
+      "performance_trend": "stable",
+      "best_mutation": "d83924a0",
+      "best_fitness": 0.8910485416157152
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.699181",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 4,
+      "current_fitness": {
+        "overall_fitness": 0.45524051400897586,
+        "success_rate": 0.25,
+        "total_mutations": 4,
+        "recent_performance": 0.45524051400897586,
+        "performance_trend": "stable",
+        "best_mutation": "d83924a0",
+        "best_fitness": 0.8910485416157152
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.700086",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 5
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.700700",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/performance_critical.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.701317",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/performance_critical.py",
+      "result": {
+        "complexity_score": 0.6899439378220794,
+        "mutation_potential": 0.6508168072214187,
+        "estimated_benefit": 0.34249843407477987,
+        "risk_assessment": 0.24202999423292218
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.701916",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.702587",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.6899439378220794,
+        "mutation_potential": 0.6508168072214187,
+        "estimated_benefit": 0.34249843407477987,
+        "risk_assessment": 0.24202999423292218
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:12.703274",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "1b581c39",
+      "target": "src/performance_critical.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.019974",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "1b581c39",
+      "success": true,
+      "fitness_score": 0.7156767250846159,
+      "execution_time": 0.3166844844818115
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.020559",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.021267",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "1b581c39"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.021935",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.47846204125387587,
+      "total_mutations": 5
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.022841",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.023967",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.5073277562241039,
+      "success_rate": 0.4,
+      "total_mutations": 5,
+      "recent_performance": 0.5073277562241039,
+      "performance_trend": "stable",
+      "best_mutation": "d83924a0",
+      "best_fitness": 0.8910485416157152
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.024826",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 5,
+      "current_fitness": {
+        "overall_fitness": 0.5073277562241039,
+        "success_rate": 0.4,
+        "total_mutations": 5,
+        "recent_performance": 0.5073277562241039,
+        "performance_trend": "stable",
+        "best_mutation": "d83924a0",
+        "best_fitness": 0.8910485416157152
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.025747",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 6
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.026841",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.027907",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.7536825294148801,
+        "mutation_potential": 0.5734244817303034,
+        "estimated_benefit": 0.3055997504742176,
+        "risk_assessment": 0.2818409564237436
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.028666",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.029556",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.7536825294148801,
+        "mutation_potential": 0.5734244817303034,
+        "estimated_benefit": 0.3055997504742176,
+        "risk_assessment": 0.2818409564237436
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.030755",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "e8e7d7a9",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.291296",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "e8e7d7a9",
+      "success": false,
+      "fitness_score": 0.20096019263135728,
+      "execution_time": 0.26052308082580566
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.291984",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.292914",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "e8e7d7a9"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.293869",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.4484620412538759,
+      "total_mutations": 6
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.295101",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.296205",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.4562664956253128,
+      "success_rate": 0.3333333333333333,
+      "total_mutations": 6,
+      "recent_performance": 0.4562664956253128,
+      "performance_trend": "stable",
+      "best_mutation": "d83924a0",
+      "best_fitness": 0.8910485416157152
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.297286",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 6,
+      "current_fitness": {
+        "overall_fitness": 0.4562664956253128,
+        "success_rate": 0.3333333333333333,
+        "total_mutations": 6,
+        "recent_performance": 0.4562664956253128,
+        "performance_trend": "stable",
+        "best_mutation": "d83924a0",
+        "best_fitness": 0.8910485416157152
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.298695",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 7
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.299672",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/performance_critical.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.300620",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/performance_critical.py",
+      "result": {
+        "complexity_score": 0.38094074275623985,
+        "mutation_potential": 0.41504401710920913,
+        "estimated_benefit": 0.5081987760977777,
+        "risk_assessment": 0.31395039838939
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.301254",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.301892",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.38094074275623985,
+        "mutation_potential": 0.41504401710920913,
+        "estimated_benefit": 0.5081987760977777,
+        "risk_assessment": 0.31395039838939
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.302960",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "007ef842",
+      "target": "src/performance_critical.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.620348",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "007ef842",
+      "success": true,
+      "fitness_score": 0.9040512381835628,
+      "execution_time": 0.31737422943115234
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.621080",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.622460",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "007ef842"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.624038",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.4940209609468446,
+      "total_mutations": 7
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.625311",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.626724",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.5202357445622057,
+      "success_rate": 0.42857142857142855,
+      "total_mutations": 7,
+      "recent_performance": 0.5202357445622057,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.628221",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 7,
+      "current_fitness": {
+        "overall_fitness": 0.5202357445622057,
+        "success_rate": 0.42857142857142855,
+        "total_mutations": 7,
+        "recent_performance": 0.5202357445622057,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.629413",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 8
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.630585",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.631891",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.5661182927857036,
+        "mutation_potential": 0.5626556976960209,
+        "estimated_benefit": 0.6974500241074664,
+        "risk_assessment": 0.4638122242418965
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.632665",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.633373",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.5661182927857036,
+        "mutation_potential": 0.5626556976960209,
+        "estimated_benefit": 0.6974500241074664,
+        "risk_assessment": 0.4638122242418965
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:13.634293",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "eeb05e75",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.020999",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "eeb05e75",
+      "success": false,
+      "fitness_score": 0.14322616569578744,
+      "execution_time": 0.3866875171661377
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.021882",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.023087",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "eeb05e75"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.024490",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.46402096094684464,
+      "total_mutations": 8
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.025507",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.026909",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.47310954720390336,
+      "success_rate": 0.375,
+      "total_mutations": 8,
+      "recent_performance": 0.47310954720390336,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.027851",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 8,
+      "current_fitness": {
+        "overall_fitness": 0.47310954720390336,
+        "success_rate": 0.375,
+        "total_mutations": 8,
+        "recent_performance": 0.47310954720390336,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.028810",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 9
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.029779",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/optimization_target.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.031294",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/optimization_target.py",
+      "result": {
+        "complexity_score": 0.8857164668236333,
+        "mutation_potential": 0.6364194743233123,
+        "estimated_benefit": 0.5215601126738891,
+        "risk_assessment": 0.2955064173286469
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.032313",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.033314",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.8857164668236333,
+        "mutation_potential": 0.6364194743233123,
+        "estimated_benefit": 0.5215601126738891,
+        "risk_assessment": 0.2955064173286469
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.034259",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "5467a0f7",
+      "target": "src/optimization_target.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.325798",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "5467a0f7",
+      "success": false,
+      "fitness_score": 0.12251870964637071,
+      "execution_time": 0.2915165424346924
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.326749",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.328192",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "5467a0f7"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.329344",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.4340209609468446,
+      "total_mutations": 9
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.330771",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.332155",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.43415500969751086,
+      "success_rate": 0.3333333333333333,
+      "total_mutations": 9,
+      "recent_performance": 0.43415500969751086,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.333431",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 9,
+      "current_fitness": {
+        "overall_fitness": 0.43415500969751086,
+        "success_rate": 0.3333333333333333,
+        "total_mutations": 9,
+        "recent_performance": 0.43415500969751086,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.334985",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 10
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.336061",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/optimization_target.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.337079",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/optimization_target.py",
+      "result": {
+        "complexity_score": 0.4981158421910807,
+        "mutation_potential": 0.6238730221268648,
+        "estimated_benefit": 0.48508997673230564,
+        "risk_assessment": 0.14345663948692172
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.338195",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.339523",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.4981158421910807,
+        "mutation_potential": 0.6238730221268648,
+        "estimated_benefit": 0.48508997673230564,
+        "risk_assessment": 0.14345663948692172
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.340759",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "390b3c2a",
+      "target": "src/optimization_target.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.700556",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "390b3c2a",
+      "success": false,
+      "fitness_score": 0.3367387832886353,
+      "execution_time": 0.3597841262817383
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.701503",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.703007",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "390b3c2a"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.704350",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.4040209609468446,
+      "total_mutations": 10
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.705414",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.706902",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.4244133870566233,
+      "success_rate": 0.3,
+      "total_mutations": 10,
+      "recent_performance": 0.4244133870566233,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.708129",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 10,
+      "current_fitness": {
+        "overall_fitness": 0.4244133870566233,
+        "success_rate": 0.3,
+        "total_mutations": 10,
+        "recent_performance": 0.4244133870566233,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.709441",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 11
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.711072",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.712569",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.6318277302942699,
+        "mutation_potential": 0.779527748782546,
+        "estimated_benefit": 0.5868623936449491,
+        "risk_assessment": 0.36217144229151244
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.713878",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.715167",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.6318277302942699,
+        "mutation_potential": 0.779527748782546,
+        "estimated_benefit": 0.5868623936449491,
+        "risk_assessment": 0.36217144229151244
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.716458",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "5bef29b3",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.935444",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "5bef29b3",
+      "success": false,
+      "fitness_score": 0.39028331818071094,
+      "execution_time": 0.21897363662719727
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.936463",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.937992",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "5bef29b3"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.939490",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.37402096094684456,
+      "total_mutations": 11
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.941124",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.942847",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.4213106535224495,
+      "success_rate": 0.2727272727272727,
+      "total_mutations": 11,
+      "recent_performance": 0.4298867515035851,
+      "performance_trend": "improving",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.944283",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 11,
+      "current_fitness": {
+        "overall_fitness": 0.4213106535224495,
+        "success_rate": 0.2727272727272727,
+        "total_mutations": 11,
+        "recent_performance": 0.4298867515035851,
+        "performance_trend": "improving",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.945522",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 12
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.947119",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/optimization_target.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.948563",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/optimization_target.py",
+      "result": {
+        "complexity_score": 0.7182670811850569,
+        "mutation_potential": 0.6743695185266683,
+        "estimated_benefit": 0.6467657099780089,
+        "risk_assessment": 0.3629491434373312
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.949809",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.951552",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.7182670811850569,
+        "mutation_potential": 0.6743695185266683,
+        "estimated_benefit": 0.6467657099780089,
+        "risk_assessment": 0.3629491434373312
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:14.952803",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "5445fbd4",
+      "target": "src/optimization_target.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.111045",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "5445fbd4",
+      "success": true,
+      "fitness_score": 0.6323626350605518,
+      "execution_time": 0.15822911262512207
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.112358",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.113885",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "5445fbd4"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.115182",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.3998551283582153,
+      "total_mutations": 12
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.116979",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.118287",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.4388983186506246,
+      "success_rate": 0.3333333333333333,
+      "total_mutations": 12,
+      "recent_performance": 0.40401816084806874,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.119908",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 12,
+      "current_fitness": {
+        "overall_fitness": 0.4388983186506246,
+        "success_rate": 0.3333333333333333,
+        "total_mutations": 12,
+        "recent_performance": 0.40401816084806874,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.121399",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 13
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.122946",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/algorithm_core.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.124539",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/algorithm_core.py",
+      "result": {
+        "complexity_score": 0.5285071337971492,
+        "mutation_potential": 0.5736127211852964,
+        "estimated_benefit": 0.3808640954089254,
+        "risk_assessment": 0.3149332627124112
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.126036",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.127750",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.5285071337971492,
+        "mutation_potential": 0.5736127211852964,
+        "estimated_benefit": 0.3808640954089254,
+        "risk_assessment": 0.3149332627124112
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.129215",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "220c54d2",
+      "target": "src/algorithm_core.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.290486",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "220c54d2",
+      "success": true,
+      "fitness_score": 0.7349114128894667,
+      "execution_time": 0.16125726699829102
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.291654",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.293384",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "220c54d2"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.295213",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.43336075681134045,
+      "total_mutations": 13
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.296905",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.298382",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.46166855666899714,
+      "success_rate": 0.38461538461538464,
+      "total_mutations": 13,
+      "recent_performance": 0.4567818139273599,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.299986",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 13,
+      "current_fitness": {
+        "overall_fitness": 0.46166855666899714,
+        "success_rate": 0.38461538461538464,
+        "total_mutations": 13,
+        "recent_performance": 0.4567818139273599,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.301366",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 14
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.303126",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/algorithm_core.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.304662",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/algorithm_core.py",
+      "result": {
+        "complexity_score": 0.474949106102574,
+        "mutation_potential": 0.579760163731634,
+        "estimated_benefit": 0.2856734642371024,
+        "risk_assessment": 0.1735888271719057
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.306134",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.308047",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.474949106102574,
+        "mutation_potential": 0.579760163731634,
+        "estimated_benefit": 0.2856734642371024,
+        "risk_assessment": 0.1735888271719057
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.309696",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "accb51ba",
+      "target": "src/algorithm_core.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.752304",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "accb51ba",
+      "success": true,
+      "fitness_score": 0.640225876976006,
+      "execution_time": 0.4425950050354004
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.753647",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.755609",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "accb51ba"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.757432",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.454047268827807,
+      "total_mutations": 14
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.759387",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.761358",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.4744226509766406,
+      "success_rate": 0.42857142857142855,
+      "total_mutations": 14,
+      "recent_performance": 0.48209550576370647,
+      "performance_trend": "improving",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.763332",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 14,
+      "current_fitness": {
+        "overall_fitness": 0.4744226509766406,
+        "success_rate": 0.42857142857142855,
+        "total_mutations": 14,
+        "recent_performance": 0.48209550576370647,
+        "performance_trend": "improving",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.765288",
+    "state": "evaluating",
+    "action": "iteration_start",
+    "details": {
+      "iteration": 15
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.767254",
+    "state": "evaluating",
+    "action": "analysis_start",
+    "details": {
+      "target": "src/data_processor.py"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.769195",
+    "state": "evaluating",
+    "action": "analysis_complete",
+    "details": {
+      "target": "src/data_processor.py",
+      "result": {
+        "complexity_score": 0.6863278789815428,
+        "mutation_potential": 0.4740419444949862,
+        "estimated_benefit": 0.22909359490406023,
+        "risk_assessment": 0.4183321226347444
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.771288",
+    "state": "mutating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "mutating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.773322",
+    "state": "mutating",
+    "action": "mutation_selection",
+    "details": {
+      "selected_type": "parallelization",
+      "analysis_input": {
+        "complexity_score": 0.6863278789815428,
+        "mutation_potential": 0.4740419444949862,
+        "estimated_benefit": 0.22909359490406023,
+        "risk_assessment": 0.4183321226347444
+      },
+      "selection_method": "learned"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:15.775226",
+    "state": "mutating",
+    "action": "mutation_start",
+    "details": {
+      "mutation_id": "cb7cbed0",
+      "target": "src/data_processor.py",
+      "type": "parallelization"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.222744",
+    "state": "mutating",
+    "action": "mutation_complete",
+    "details": {
+      "mutation_id": "cb7cbed0",
+      "success": false,
+      "fitness_score": 0.24501352300419454,
+      "execution_time": 0.44750332832336426
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.224110",
+    "state": "learning",
+    "action": "state_transition",
+    "details": {
+      "from_state": "mutating",
+      "to_state": "learning"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.225868",
+    "state": "learning",
+    "action": "learning_update_start",
+    "details": {
+      "mutation_id": "cb7cbed0"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.227977",
+    "state": "learning",
+    "action": "learning_update_complete",
+    "details": {
+      "mutation_type": "parallelization",
+      "new_preference": 0.42404726882780697,
+      "total_mutations": 15
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.229674",
+    "state": "evaluating",
+    "action": "state_transition",
+    "details": {
+      "from_state": "learning",
+      "to_state": "evaluating"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.231591",
+    "state": "evaluating",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.45912870911181086,
+      "success_rate": 0.4,
+      "total_mutations": 15,
+      "recent_performance": 0.4350291855556644,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.233601",
+    "state": "evaluating",
+    "action": "iteration_complete",
+    "details": {
+      "iteration": 15,
+      "current_fitness": {
+        "overall_fitness": 0.45912870911181086,
+        "success_rate": 0.4,
+        "total_mutations": 15,
+        "recent_performance": 0.4350291855556644,
+        "performance_trend": "stable",
+        "best_mutation": "007ef842",
+        "best_fitness": 0.9040512381835628
+      }
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.235629",
+    "state": "optimizing",
+    "action": "state_transition",
+    "details": {
+      "from_state": "evaluating",
+      "to_state": "optimizing"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.237610",
+    "state": "optimizing",
+    "action": "fitness_evaluation",
+    "details": {
+      "overall_fitness": 0.45912870911181086,
+      "success_rate": 0.4,
+      "total_mutations": 15,
+      "recent_performance": 0.4350291855556644,
+      "performance_trend": "stable",
+      "best_mutation": "007ef842",
+      "best_fitness": 0.9040512381835628
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.240100",
+    "state": "completed",
+    "action": "state_transition",
+    "details": {
+      "from_state": "optimizing",
+      "to_state": "completed"
+    }
+  },
+  {
+    "timestamp": "2025-08-05T04:25:16.241561",
+    "state": "completed",
+    "action": "evolution_complete",
+    "details": {
+      "total_iterations": 15,
+      "final_report": {
+        "execution_timestamp": "2025-08-05T04:25:16.239859",
+        "system_status": "autonomous_completion",
+        "final_state": "optimizing",
+        "performance_summary": {
+          "overall_fitness": 0.45912870911181086,
+          "success_rate": 0.4,
+          "total_mutations": 15,
+          "recent_performance": 0.4350291855556644,
+          "performance_trend": "stable",
+          "best_mutation": "007ef842",
+          "best_fitness": 0.9040512381835628
+        },
+        "learning_summary": {
+          "mutation_preferences": {
+            "parallelization": 0.42404726882780697
+          },
+          "total_patterns_learned": 1,
+          "adaptation_cycles": 15
+        },
+        "mutation_summary": {
+          "total_mutations": 15,
+          "successful_mutations": 6,
+          "mutation_types_explored": 1,
+          "average_execution_time": 0.2893256982167562
+        },
+        "autonomous_decisions": 15,
+        "state_transitions": 47,
+        "log_file": "autonomous_evolution_demo/autonomous_log_20250805_042511.json",
+        "verification": {
+          "zero_human_intervention": true,
+          "autonomous_learning": true,
+          "self_directed_optimization": true,
+          "complete_automation": true
+        }
+      }
+    }
+  }
+]
