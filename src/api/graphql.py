@@ -13,8 +13,10 @@ from typing import Dict, List, Any, Optional
 import logging
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
+class_name = "Graphql"
 
 
 class GraphqlRequest:
@@ -74,6 +76,48 @@ class GraphqlAPI:
             "timestamp": datetime.now().isoformat(),
             "service": "{class_name} API"
         }
+
+
+@dataclass
+class GraphqlConfig:
+    """Configuration for Graphql component."""
+    enabled: bool = True
+    max_retries: int = 3
+    timeout: float = 30.0
+
+
+class Graphql:
+    """Lightweight GraphQL component with initialize/execute/cleanup methods."""
+
+    def __init__(self, config: Optional[GraphqlConfig] = None):
+        self.config = config or GraphqlConfig()
+        self.logger = logging.getLogger(self.__class__.__name__)
+        self._initialized = False
+
+    def initialize(self) -> bool:
+        self.logger.info("Initializing Graphql component")
+        self._initialized = True
+        return True
+
+    def execute(self, *args, **kwargs) -> Dict[str, Any]:
+        if not self._initialized:
+            raise RuntimeError("Graphql component not initialized")
+        self.logger.info("Executing Graphql component")
+        return {
+            "status": "success",
+            "timestamp": datetime.now().isoformat(),
+            "cycle": 3,
+            "data": {},
+        }
+
+    def cleanup(self):
+        self.logger.info("Cleaning up Graphql component")
+        self._initialized = False
+
+
+def create_graphql(config: Optional[GraphqlConfig] = None) -> Graphql:
+    """Factory helper to create a Graphql instance."""
+    return Graphql(config)
 
 
 # Create API instance

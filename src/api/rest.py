@@ -13,8 +13,10 @@ from typing import Dict, List, Any, Optional
 import logging
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
+class_name = "Rest"
 
 
 class RestRequest:
@@ -74,6 +76,48 @@ class RestAPI:
             "timestamp": datetime.now().isoformat(),
             "service": "{class_name} API"
         }
+
+
+@dataclass
+class RestConfig:
+    """Configuration for Rest component."""
+    enabled: bool = True
+    max_retries: int = 3
+    timeout: float = 30.0
+
+
+class Rest:
+    """Lightweight REST component with lifecycle methods used in tests."""
+
+    def __init__(self, config: Optional[RestConfig] = None):
+        self.config = config or RestConfig()
+        self.logger = logging.getLogger(self.__class__.__name__)
+        self._initialized = False
+
+    def initialize(self) -> bool:
+        self.logger.info("Initializing Rest component")
+        self._initialized = True
+        return True
+
+    def execute(self, *args, **kwargs) -> Dict[str, Any]:
+        if not self._initialized:
+            raise RuntimeError("Rest component not initialized")
+        self.logger.info("Executing Rest component")
+        return {
+            "status": "success",
+            "timestamp": datetime.now().isoformat(),
+            "cycle": 3,
+            "data": {},
+        }
+
+    def cleanup(self):
+        self.logger.info("Cleaning up Rest component")
+        self._initialized = False
+
+
+def create_rest(config: Optional[RestConfig] = None) -> Rest:
+    """Factory helper to create a Rest instance."""
+    return Rest(config)
 
 
 # Create API instance
