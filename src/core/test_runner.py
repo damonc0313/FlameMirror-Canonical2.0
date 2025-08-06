@@ -34,7 +34,7 @@ class TestRunner:
     
     def __init__(self, config: Optional[TestRunnerConfig] = None):
         self.config = config or TestRunnerConfig()
-        self.logger = logging.getLogger(f"{__name__}.{class_name}")
+        self.logger = logging.getLogger(f"{__name__}.TestRunner")
         self._initialized = False
         
     def initialize(self) -> bool:
@@ -44,7 +44,7 @@ class TestRunner:
             self._initialized = True
             return True
         except Exception as e:
-            self.logger.error(f"Failed to initialize {class_name}: {e}")
+            self.logger.error(f"Failed to initialize TestRunner: {e}")
             return False
     
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
@@ -71,7 +71,7 @@ class TestRunner:
             return result
             
         except Exception as e:
-            self.logger.error(f"Error in {class_name}.execute: {e}")
+            self.logger.error(f"Error in TestRunner.execute: {e}")
             return {
                 "status": "error",
                 "error": str(e),
