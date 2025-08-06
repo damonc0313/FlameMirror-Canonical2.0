@@ -34,7 +34,7 @@ class Documenter:
     
     def __init__(self, config: Optional[DocumenterConfig] = None):
         self.config = config or DocumenterConfig()
-        self.logger = logging.getLogger(f"{__name__}.{class_name}")
+        self.logger = logging.getLogger(f"{__name__}.Documenter")
         self._initialized = False
         
     def initialize(self) -> bool:
@@ -44,7 +44,7 @@ class Documenter:
             self._initialized = True
             return True
         except Exception as e:
-            self.logger.error(f"Failed to initialize {class_name}: {e}")
+            self.logger.error(f"Failed to initialize Documenter: {e}")
             return False
     
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
@@ -55,10 +55,10 @@ class Documenter:
             Dict containing execution results and metadata.
         """
         if not self._initialized:
-            raise RuntimeError("{class_name} not initialized")
+            raise RuntimeError("Documenter not initialized")
         
         try:
-            self.logger.info("Executing {class_name}")
+            self.logger.info("Executing Documenter")
             
             # Core execution logic here
             result = {
@@ -71,7 +71,7 @@ class Documenter:
             return result
             
         except Exception as e:
-            self.logger.error(f"Error in {class_name}.execute: {e}")
+            self.logger.error(f"Error in Documenter.execute: {e}")
             return {
                 "status": "error",
                 "error": str(e),
@@ -80,13 +80,13 @@ class Documenter:
     
     def cleanup(self):
         """Cleanup resources."""
-        self.logger.info("Cleaning up {class_name}")
+        self.logger.info("Cleaning up Documenter")
         self._initialized = False
 
 
 # Factory function for easy instantiation
 def create_documenter(config: Optional[DocumenterConfig] = None) -> Documenter:
-    """Create a new instance of {class_name}."""
+    """Create a new instance of Documenter."""
     return Documenter(config)
 
 
