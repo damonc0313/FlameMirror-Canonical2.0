@@ -34,7 +34,7 @@ class Validator:
     
     def __init__(self, config: Optional[ValidatorConfig] = None):
         self.config = config or ValidatorConfig()
-        self.logger = logging.getLogger(f"{__name__}.{class_name}")
+        self.logger = logging.getLogger(f"{__name__}.Validator")
         self._initialized = False
         
     def initialize(self) -> bool:
@@ -44,7 +44,7 @@ class Validator:
             self._initialized = True
             return True
         except Exception as e:
-            self.logger.error(f"Failed to initialize {class_name}: {e}")
+            self.logger.error(f"Failed to initialize Validator: {e}")
             return False
     
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
@@ -71,7 +71,7 @@ class Validator:
             return result
             
         except Exception as e:
-            self.logger.error(f"Error in {class_name}.execute: {e}")
+            self.logger.error(f"Error in Validator.execute: {e}")
             return {
                 "status": "error",
                 "error": str(e),
