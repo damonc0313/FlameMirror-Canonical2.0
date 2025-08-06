@@ -34,7 +34,7 @@ class AutonomousAgent:
     
     def __init__(self, config: Optional[AutonomousAgentConfig] = None):
         self.config = config or AutonomousAgentConfig()
-        self.logger = logging.getLogger(f"{__name__}.{class_name}")
+        self.logger = logging.getLogger(f"{__name__}.AutonomousAgent")
         self._initialized = False
         
     def initialize(self) -> bool:
@@ -44,7 +44,7 @@ class AutonomousAgent:
             self._initialized = True
             return True
         except Exception as e:
-            self.logger.error(f"Failed to initialize {class_name}: {e}")
+            self.logger.error(f"Failed to initialize AutonomousAgent: {e}")
             return False
     
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
@@ -55,10 +55,10 @@ class AutonomousAgent:
             Dict containing execution results and metadata.
         """
         if not self._initialized:
-            raise RuntimeError("{class_name} not initialized")
+            raise RuntimeError("AutonomousAgent not initialized")
         
         try:
-            self.logger.info("Executing {class_name}")
+            self.logger.info("Executing AutonomousAgent")
             
             # Core execution logic here
             result = {
@@ -71,7 +71,7 @@ class AutonomousAgent:
             return result
             
         except Exception as e:
-            self.logger.error(f"Error in {class_name}.execute: {e}")
+            self.logger.error(f"Error in AutonomousAgent.execute: {e}")
             return {
                 "status": "error",
                 "error": str(e),
@@ -80,13 +80,13 @@ class AutonomousAgent:
     
     def cleanup(self):
         """Cleanup resources."""
-        self.logger.info("Cleaning up {class_name}")
+        self.logger.info("Cleaning up AutonomousAgent")
         self._initialized = False
 
 
 # Factory function for easy instantiation
 def create_autonomousagent(config: Optional[AutonomousAgentConfig] = None) -> AutonomousAgent:
-    """Create a new instance of {class_name}."""
+    """Create a new instance of AutonomousAgent."""
     return AutonomousAgent(config)
 
 
