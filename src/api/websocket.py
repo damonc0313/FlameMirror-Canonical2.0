@@ -13,8 +13,10 @@ from typing import Dict, List, Any, Optional
 import logging
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
+class_name = "Websocket"
 
 
 class WebsocketRequest:
@@ -74,6 +76,48 @@ class WebsocketAPI:
             "timestamp": datetime.now().isoformat(),
             "service": "{class_name} API"
         }
+
+
+@dataclass
+class WebsocketConfig:
+    """Configuration for Websocket component."""
+    enabled: bool = True
+    max_retries: int = 3
+    timeout: float = 30.0
+
+
+class Websocket:
+    """Lightweight WebSocket component with lifecycle management."""
+
+    def __init__(self, config: Optional[WebsocketConfig] = None):
+        self.config = config or WebsocketConfig()
+        self.logger = logging.getLogger(self.__class__.__name__)
+        self._initialized = False
+
+    def initialize(self) -> bool:
+        self.logger.info("Initializing Websocket component")
+        self._initialized = True
+        return True
+
+    def execute(self, *args, **kwargs) -> Dict[str, Any]:
+        if not self._initialized:
+            raise RuntimeError("Websocket component not initialized")
+        self.logger.info("Executing Websocket component")
+        return {
+            "status": "success",
+            "timestamp": datetime.now().isoformat(),
+            "cycle": 3,
+            "data": {},
+        }
+
+    def cleanup(self):
+        self.logger.info("Cleaning up Websocket component")
+        self._initialized = False
+
+
+def create_websocket(config: Optional[WebsocketConfig] = None) -> Websocket:
+    """Factory helper to create a Websocket instance."""
+    return Websocket(config)
 
 
 # Create API instance
