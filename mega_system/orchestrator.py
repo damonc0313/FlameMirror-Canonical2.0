@@ -3,6 +3,8 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 from typing import Any, Dict
+import json
+from datetime import datetime
 
 from core.autonomous_agent import create_autonomousagent
 from core.code_generator import create_codegenerator
@@ -122,6 +124,21 @@ class MegaSystem:
         # After executing everything, perform cleanup so resources are released
         self.cleanup_all()
         return report
+
+    def save_report(self, report: Dict[str, Any], log_dir: str | Path = "logs") -> Path:
+        """Persist a single run report to *log_dir* as a timestamped JSON file.
+
+        The file name format is ``YYYYMMDD_HHMMSS_report.json``.
+        Returns the path to the saved file.
+        """
+        log_path = Path(log_dir)
+        log_path.mkdir(parents=True, exist_ok=True)
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        out_file = log_path / f"{ts}_report.json"
+        with out_file.open("w", encoding="utf-8") as fh:
+            json.dump(report, fh, indent=2)
+        logger.info("Saved report to %s", out_file)
+        return out_file
 
     # ---------------------------------------------------------------------
     # Convenience helpers
