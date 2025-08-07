@@ -8,92 +8,53 @@ Timestamp: 2025-08-05T06:23:31.243808
 This module provides core functionality for the autonomous codebase generation system.
 """
 
-import logging
-from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any, Dict, Optional
 
-logger = logging.getLogger(__name__)
+from .base import BaseComponent, ComponentConfig
 
 
 @dataclass
-class CodeGeneratorConfig:
+class CodeGeneratorConfig(ComponentConfig):
     """Configuration for CodeGenerator."""
-    enabled: bool = True
-    max_retries: int = 3
-    timeout: float = 30.0
 
 
-class CodeGenerator:
-    """
-    CodeGenerator - Core component of the autonomous codebase generation system.
-    
-    This class provides essential functionality for autonomous operation
-    with PhD-grade rigor and comprehensive error handling.
-    """
-    
+class CodeGenerator(BaseComponent):
+    """CodeGenerator - Core component of the autonomous codebase generation system."""
+
     def __init__(self, config: Optional[CodeGeneratorConfig] = None):
-        self.config = config or CodeGeneratorConfig()
-        self.logger = logging.getLogger(f"{__name__}.CodeGenerator")
-        self._initialized = False
-        
-    def initialize(self) -> bool:
-        """Initialize the component."""
-        try:
-            self.logger.info("Initializing CodeGenerator")
-            self._initialized = True
-            return True
-        except Exception as e:
-            self.logger.error(f"Failed to initialize CodeGenerator: {e}")
-            return False
-    
+        super().__init__(name="CodeGenerator", config=config)
+
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
-        """
-        Execute the main functionality of this component.
-        
-        Returns:
-            Dict containing execution results and metadata.
-        """
+        """Execute the main functionality of this component."""
         if not self._initialized:
             raise RuntimeError("CodeGenerator not initialized")
-        
         try:
             self.logger.info("Executing CodeGenerator")
-            
-            # Core execution logic here
-            result = {
+            return {
                 "status": "success",
                 "timestamp": datetime.now().isoformat(),
                 "cycle": 1,
-                "data": {}
+                "data": {},
             }
-            
-            return result
-            
-        except Exception as e:
-            self.logger.error(f"Error in CodeGenerator.execute: {e}")
+        except Exception as e:  # pragma: no cover - defensive
+            self.logger.error("Error in CodeGenerator.execute: %s", e)
             return {
                 "status": "error",
                 "error": str(e),
-                "timestamp": datetime.now().isoformat()
+                "timestamp": datetime.now().isoformat(),
             }
-    
-    def cleanup(self):
-        """Cleanup resources."""
-        self.logger.info("Cleaning up CodeGenerator")
-        self._initialized = False
 
 
-# Factory function for easy instantiation
 def create_codegenerator(config: Optional[CodeGeneratorConfig] = None) -> CodeGenerator:
     """Create a new instance of CodeGenerator."""
     return CodeGenerator(config)
 
 
-if __name__ == "__main__":
-    # Example usage
+if __name__ == "__main__":  # pragma: no cover
     component = create_codegenerator()
     if component.initialize():
-        result = component.execute()
-        print(f"Execution result: {result}")
+        print(component.execute())
+        print(component.health_check())
         component.cleanup()
