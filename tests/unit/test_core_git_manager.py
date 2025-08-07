@@ -50,6 +50,13 @@ class TestGitManager:
         assert "timestamp" in result
         assert "cycle" in result
         assert "data" in result
+    def test_health_check(self):
+        """Health check reflects initialization state."""
+        self.component.initialize()
+        status = self.component.health_check()
+        assert status["status"] == "healthy"
+        assert status["component"] == "GitManager"
+
     
     def test_factory_function(self):
         """Test the factory function."""

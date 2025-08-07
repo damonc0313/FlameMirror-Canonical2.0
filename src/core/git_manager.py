@@ -8,92 +8,53 @@ Timestamp: 2025-08-05T06:23:32.917804
 This module provides core functionality for the autonomous codebase generation system.
 """
 
-import logging
-from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any, Dict, Optional
 
-logger = logging.getLogger(__name__)
+from .base import BaseComponent, ComponentConfig
 
 
 @dataclass
-class GitManagerConfig:
+class GitManagerConfig(ComponentConfig):
     """Configuration for GitManager."""
-    enabled: bool = True
-    max_retries: int = 3
-    timeout: float = 30.0
 
 
-class GitManager:
-    """
-    GitManager - Core component of the autonomous codebase generation system.
-    
-    This class provides essential functionality for autonomous operation
-    with PhD-grade rigor and comprehensive error handling.
-    """
-    
+class GitManager(BaseComponent):
+    """GitManager - Core component of the autonomous codebase generation system."""
+
     def __init__(self, config: Optional[GitManagerConfig] = None):
-        self.config = config or GitManagerConfig()
-        self.logger = logging.getLogger(f"{__name__}.GitManager")
-        self._initialized = False
-        
-    def initialize(self) -> bool:
-        """Initialize the component."""
-        try:
-            self.logger.info("Initializing GitManager")
-            self._initialized = True
-            return True
-        except Exception as e:
-            self.logger.error(f"Failed to initialize GitManager: {e}")
-            return False
-    
+        super().__init__(name="GitManager", config=config)
+
     def execute(self, *args, **kwargs) -> Dict[str, Any]:
-        """
-        Execute the main functionality of this component.
-        
-        Returns:
-            Dict containing execution results and metadata.
-        """
+        """Execute the main functionality of this component."""
         if not self._initialized:
             raise RuntimeError("GitManager not initialized")
-        
         try:
             self.logger.info("Executing GitManager")
-            
-            # Core execution logic here
-            result = {
+            return {
                 "status": "success",
                 "timestamp": datetime.now().isoformat(),
                 "cycle": 2,
-                "data": {}
+                "data": {},
             }
-            
-            return result
-            
-        except Exception as e:
-            self.logger.error(f"Error in GitManager.execute: {e}")
+        except Exception as e:  # pragma: no cover - defensive
+            self.logger.error("Error in GitManager.execute: %s", e)
             return {
                 "status": "error",
                 "error": str(e),
-                "timestamp": datetime.now().isoformat()
+                "timestamp": datetime.now().isoformat(),
             }
-    
-    def cleanup(self):
-        """Cleanup resources."""
-        self.logger.info("Cleaning up GitManager")
-        self._initialized = False
 
 
-# Factory function for easy instantiation
 def create_gitmanager(config: Optional[GitManagerConfig] = None) -> GitManager:
     """Create a new instance of GitManager."""
     return GitManager(config)
 
 
-if __name__ == "__main__":
-    # Example usage
+if __name__ == "__main__":  # pragma: no cover
     component = create_gitmanager()
     if component.initialize():
-        result = component.execute()
-        print(f"Execution result: {result}")
+        print(component.execute())
+        print(component.health_check())
         component.cleanup()
