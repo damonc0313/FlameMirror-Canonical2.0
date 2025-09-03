@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class TestRunnerConfig:
     """Configuration for TestRunner."""
+    __test__ = False
     enabled: bool = True
     max_retries: int = 3
     timeout: float = 30.0
@@ -31,6 +32,8 @@ class TestRunner:
     This class provides essential functionality for autonomous operation
     with PhD-grade rigor and comprehensive error handling.
     """
+
+    __test__ = False
     
     def __init__(self, config: Optional[TestRunnerConfig] = None):
         self.config = config or TestRunnerConfig()
