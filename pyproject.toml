@@ -1,41 +1,58 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hash_verifier"
-version = "1.0.0"
-description = "Utility for verifying file integrity using SHA-256 hashes"
+name = "flamemirror"
+version = "0.1.0"
+description = "Autonomous FlameMirror agent framework with fuzzy guidance and ML-assisted code generation"
 readme = "README.md"
 authors = [
-    {name = "Damon Cadden", email = "damonc2013@gmail.com"}
+    {name = "FlameMirror Contributors"}
 ]
-license = {text = "Proprietary"}
-requires-python = ">=3.8"
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "License :: Other/Proprietary License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+    "typing-extensions>=4.8.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=6.0",
-    "pytest-cov>=2.0",
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "mypy>=1.7",
+    "ruff>=0.1.9",
 ]
 
 [project.scripts]
-hash-verifier = "hash_verifier:main"
+run-flamemirror = "flamemirror.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
+addopts = "--cov=flamemirror --cov-report=term-missing"
 testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["flamemirror"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.ruff]
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["flamemirror"]
+warn_unused_configs = true

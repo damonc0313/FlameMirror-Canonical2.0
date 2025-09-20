@@ -1,23 +1,5 @@
-"""
-Superhuman Coder Phase II+III
-Revolutionary Autonomous Code Intelligence System
-"""
+"""Top-level package for FlameMirror."""
 
-__version__ = "2.0.0"
-__author__ = "Superhuman Coder Team"
-__email__ = "contact@superhumancoder.com"
+from .flamemirror import *  # noqa: F401,F403
 
-from .superhuman_coder_phase2_core import *
-from .superhuman_coder_phase2_swarm import *
-from .superhuman_coder_phase2_demo import *
-
-__all__ = [
-    "RawStructureRepresentation",
-    "EmergentLanguage", 
-    "SwarmAgent",
-    "MetaMutator",
-    "AutonomousFitnessFunction",
-    "BlackBoxValidationHarness",
-    "SwarmIntelligenceFabric",
-    "SuperhumanCoderPhase2"
-]
+__all__ = [name for name in globals() if not name.startswith("_")]
