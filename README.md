@@ -61,6 +61,20 @@ mypy src/flamemirror
 pytest
 ```
 
+## Validation with GitHub CLI
+
+The GitHub Actions workflow mirrors the local validation gates (notebook,
+tests, linting, typing, security, Docker build). Trigger it directly from the
+command line with the `validate` make target:
+
+```bash
+make validate
+```
+
+This command requires an authenticated `gh` CLI session. It will dispatch the
+`ci.yml` workflow for the current commit and stream job results until the run is
+complete.
+
 ## License
 
 Released under the MIT License. See [LICENSE](LICENSE) for details.
