@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import contextlib
 import io
 from dataclasses import dataclass
@@ -41,10 +42,12 @@ class Sandbox:
         stdout_buffer = io.StringIO()
         stderr_buffer = io.StringIO()
         try:
+            self._validate_code(code)
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(
                 stderr_buffer
             ):
-                exec(code, local_globals)
+                # The code has been AST-validated and runs with curated builtins.
+                exec(code, local_globals)  # nosec B102
         except BaseException as exc:  # noqa: BLE001 - we intentionally catch everything
             return SandboxResult(
                 success=False,
@@ -59,6 +62,21 @@ class Sandbox:
             stdout=stdout_buffer.getvalue(),
             stderr=stderr_buffer.getvalue(),
         )
+
+    def _validate_code(self, code: str) -> None:
+        try:
+            module = ast.parse(code)
+        except SyntaxError as exc:  # pragma: no cover - surfaced in SandboxResult
+            raise ValueError(f"Sandbox received invalid syntax: {exc}") from exc
+
+        forbidden_names = {"__builtins__", "__import__", "eval", "exec", "open"}
+        for node in ast.walk(module):
+            if isinstance(node, (ast.Import, ast.ImportFrom)):
+                raise ValueError("Import statements are not allowed inside the sandbox")
+            if isinstance(node, ast.Attribute) and node.attr.startswith("__"):
+                raise ValueError("Access to dunder attributes is blocked in the sandbox")
+            if isinstance(node, ast.Name) and node.id in forbidden_names:
+                raise ValueError(f"Use of '{node.id}' is not permitted in the sandbox")
 
     def evaluate_function(
         self,

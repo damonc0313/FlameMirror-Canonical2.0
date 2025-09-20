@@ -1,0 +1,15 @@
+# Ignore legacy experimental artifacts that are not part of the maintained package
+adaptive_learning_engine.py
+advanced_evolutionary_algorithms.py
+autonomous_*.py
+legacy/
+massive_scale_codebase/
+massive_scale_generator.py
+neural_*.py
+pareto_fitness_optimizer.py
+superhuman_*.py
+theoretical_foundations.py
+hash_verifier/
+autonomous_evolution_workspace/
+training_problems/
+dist/
