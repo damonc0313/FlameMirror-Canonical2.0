@@ -1,0 +1,14 @@
+rules:
+  - name: improve-coverage
+    conditions:
+      coverage:
+        lt: 0.9
+    advice: Increase test coverage before expanding scope.
+  - name: investigate-failures
+    conditions:
+      failures:
+        gt: 0
+    advice: Address failing stages prior to new generation.
+  - name: maintain-momentum
+    conditions: {}
+    advice: Proceed with planned feature development.
