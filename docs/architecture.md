@@ -43,6 +43,8 @@ resilient to refactors.
   and Crucible training feedback.
 - `generator.py` — exposes `CodeGenerator` which can synthesize code locally or
   through the GraphformicCoder backend.
+- `benchmarks.py` — persists capability/reliability runs so longitudinal
+  progress towards external targets is trackable and auditable.
 - `validator.py` — statically analyzes generated code, computing lightweight
   complexity metrics.
 - `testrunner.py` — wraps `pytest` execution with dependency injection for
@@ -63,6 +65,16 @@ The `ml/` package provides opt-in LLM assistance.
 `fuzzy/engine.py` evaluates rules from `fuzzy/rules.yaml` and returns human-like
 advice used to reprioritize plan steps. Rules can be modified without changing
 code, providing a flexible experimentation surface.
+
+## Benchmark Governance
+
+`benchmarks.py` introduces a persistent registry (`BenchmarkRegistry`) that can
+record nightly or release candidate benchmark executions. Each
+`BenchmarkReport` tracks success rates for mandatory gates such as SWE-bench
+Verified, BigCodeBench Complete/Instruct, HumanEval, security scans, and
+autonomous uptime exercises. The registry exports human-readable summaries used
+for release sign-off and can be embedded into CI for automated regression
+detection.
 
 ## Continuous Learning
 
