@@ -34,6 +34,8 @@ repository history unless you explicitly opt-in.
 - Fuzzy guidance rules that dynamically reorder plan priorities
 - Documentation and notebooks showcasing the full system pipeline
 - Continuous learning hooks with checkpoint management
+- Benchmark tracking utilities for SWE-bench, BigCodeBench, HumanEval, and
+  reliability gates (see [docs/benchmarking.md](docs/benchmarking.md))
 
 ## Repository Layout
 
@@ -58,6 +60,20 @@ ruff check src/flamemirror tests
 mypy src/flamemirror
 pytest
 ```
+
+## Validation with GitHub CLI
+
+The GitHub Actions workflow mirrors the local validation gates (notebook,
+tests, linting, typing, security, Docker build). Trigger it directly from the
+command line with the `validate` make target:
+
+```bash
+make validate
+```
+
+This command requires an authenticated `gh` CLI session. It will dispatch the
+`ci.yml` workflow for the current commit and stream job results until the run is
+complete.
 
 ## License
 

@@ -10,12 +10,41 @@ they can be replaced or extended in isolation.
 └────────┘     └─────────┘     └──────────┘     └────────────┘     └─────────┘
 ```
 
+```mermaid
+flowchart LR
+    CLI[CLI / run_agent.py]
+    subgraph Workspace
+        subgraph Agent Loop
+            PLAN[autonomous_agent.PlanStep]
+            GEN[generator.CodeGenerator]
+            TEST[testrunner.PytestRunner]
+            VAL[validator.CodeValidator]
+            GIT[gitmanager.GitManager]
+        end
+    end
+
+    CLI --> PLAN
+    PLAN --> GEN
+    GEN --> TEST
+    TEST --> VAL
+    VAL -->|pass| GIT
+    VAL -->|fail| PLAN
+    TEST -->|fail| PLAN
+    GIT --> CLI
+```
+
+The CLI seeds the loop with a workspace path and optional flags. Each stage only
+depends on the public API of the next component which keeps the architecture
+resilient to refactors.
+
 ## Core Modules
 
 - `autonomous_agent.py` — orchestrates the loop and coordinates fuzzy guidance
   and Crucible training feedback.
 - `generator.py` — exposes `CodeGenerator` which can synthesize code locally or
   through the GraphformicCoder backend.
+- `benchmarks.py` — persists capability/reliability runs so longitudinal
+  progress towards external targets is trackable and auditable.
 - `validator.py` — statically analyzes generated code, computing lightweight
   complexity metrics.
 - `testrunner.py` — wraps `pytest` execution with dependency injection for
@@ -37,6 +66,16 @@ The `ml/` package provides opt-in LLM assistance.
 advice used to reprioritize plan steps. Rules can be modified without changing
 code, providing a flexible experimentation surface.
 
+## Benchmark Governance
+
+`benchmarks.py` introduces a persistent registry (`BenchmarkRegistry`) that can
+record nightly or release candidate benchmark executions. Each
+`BenchmarkReport` tracks success rates for mandatory gates such as SWE-bench
+Verified, BigCodeBench Complete/Instruct, HumanEval, security scans, and
+autonomous uptime exercises. The registry exports human-readable summaries used
+for release sign-off and can be embedded into CI for automated regression
+detection.
+
 ## Continuous Learning
 
 Failed tasks are appended to `training_problems/failed_tasks.jsonl` while
@@ -52,3 +91,24 @@ Three Jupyter notebooks in `examples/` demonstrate:
 3. Applying fuzzy guidance to reorder plan priorities
 
 Each notebook can be executed after installing the package in editable mode.
+
+- `demo.ipynb` (new) showcases the full loop with a stubbed pytest runner so it
+  can be executed inside constrained environments.
+
+## Usage Notes
+
+1. Install development dependencies with `pip install -e .[dev]` to obtain the
+   linting, typing, and notebook toolchain.
+2. Run a dry-run cycle: `python -m flamemirror.cli --workspace ./demo-workspace`.
+3. Enable additional capabilities when ready:
+   - `--enable-ml` loads the `GraphformicCoder` surrogate model.
+   - `--enable-fuzzy` activates fuzzy-rule prioritisation.
+   - `--no-dry-run` allows real git commits once a repository is initialised.
+4. Review the generated plan, telemetry, and commits inside the workspace.
+
+## Legacy Artifacts
+
+Extensive exploratory prototypes from earlier research phases now live in the
+`legacy/` directory. They are excluded from tooling via the Ruff configuration
+to keep the production surface focused on the maintained `flamemirror` package.
+The raw files remain available for reference without impacting CI quality gates.

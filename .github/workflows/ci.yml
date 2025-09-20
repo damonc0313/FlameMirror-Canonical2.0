@@ -2,68 +2,106 @@ name: CI
 
 on:
   push:
-    branches: ["main", "master"]
+    branches:
+      - "**"
   pull_request:
-    branches: ["*"]
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: "3.11"
 
 jobs:
-  lint:
+  notebook:
+    name: Execute demo notebook
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - run: python -m pip install --upgrade pip
-      - run: pip install .[dev]
-      - run: ruff check src/flamemirror tests
-
-  type-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[dev]
+      - name: Run demo notebook
+        run: |
+          python -m nbconvert --to notebook --execute --output demo-executed.ipynb examples/demo.ipynb
+      - name: Upload executed notebook
+        uses: actions/upload-artifact@v4
         with:
-          python-version: "3.11"
-      - run: python -m pip install --upgrade pip
-      - run: pip install .[dev]
-      - run: mypy src/flamemirror
+          name: executed-notebooks
+          path: demo-executed.ipynb
 
   tests:
+    name: Pytest (coverage ≥ 90%)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - run: python -m pip install --upgrade pip
-      - run: pip install .[dev]
-      - run: pytest --cov=flamemirror --cov-report=xml --cov-report=term
-
-  coverage-gate:
-    runs-on: ubuntu-latest
-    needs: tests
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-      - run: python -m pip install coverage[toml]
-      - name: Enforce coverage threshold
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install project
         run: |
-          coverage xml -i
-          python - <<'PY'
-import xml.etree.ElementTree as ET
-from pathlib import Path
+          python -m pip install --upgrade pip
+          pip install .[dev]
+      - name: Run pytest with coverage
+        run: pytest --cov=src --cov-report=xml --cov-report=term --cov-fail-under=90
+      - name: Upload coverage xml
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
 
-coverage_file = Path('coverage.xml')
-if not coverage_file.exists():
-    raise SystemExit('coverage.xml not found')
+  lint:
+    name: Ruff lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[dev]
+      - name: Run ruff
+        run: ruff check src/flamemirror tests
 
-root = ET.parse(coverage_file).getroot()
-line_rate = float(root.attrib['line-rate'])
-threshold = 0.90
-if line_rate < threshold:
-    raise SystemExit(f"Coverage {line_rate:.2%} is below threshold {threshold:.0%}")
-print(f"Coverage gate passed: {line_rate:.2%}")
-PY
+  typing:
+    name: mypy --strict
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[dev]
+      - name: Run mypy
+        run: mypy --strict src/
+
+  security:
+    name: Bandit scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[dev]
+          pip install bandit
+      - name: Run bandit
+        run: python -m bandit -r src
+
+  docker-build:
+    name: Docker build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build . -f Dockerfile -t flamemirror:ci

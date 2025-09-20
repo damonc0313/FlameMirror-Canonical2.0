@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-import subprocess
+import subprocess  # nosec B404
+
+# Controlled usage restricted to git CLI invocations.
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable, Iterable, List, Optional, Sequence
@@ -42,7 +44,9 @@ class GitManager:
         return CommitResult(committed=True, message=message, dry_run=False, staged_files=staged)
 
     def _run(self, command: Sequence[str]) -> subprocess.CompletedProcess[str]:
-        return subprocess.run(
+        if not command or command[0] != "git":
+            raise ValueError("GitManager only permits git commands")
+        return subprocess.run(  # nosec B603
             command,
             cwd=self.workspace,
             check=True,
