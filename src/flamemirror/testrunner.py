@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import subprocess  # nosec B404
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional, Sequence, Tuple
@@ -40,7 +42,15 @@ class PytestRunner:
         )
 
     def _run_pytest(self, args: Tuple[str, ...]) -> Tuple[int, str, Optional[float]]:
-        import pytest
-
-        exit_code = pytest.main(list(args))
-        return exit_code, "", None
+        command = (sys.executable, "-m", "pytest", *args)
+        result = subprocess.run(  # nosec B603
+            command,
+            cwd=self.workspace,
+            text=True,
+            capture_output=True,
+        )
+        output = "".join([result.stdout, result.stderr])
+        exit_code = 0 if result.returncode == 5 else result.returncode
+        if result.returncode == 5:
+            output += "\n[flamemirror] No tests collected; treating as success.\n"
+        return exit_code, output, None

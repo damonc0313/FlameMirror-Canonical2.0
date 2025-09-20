@@ -34,6 +34,8 @@ repository history unless you explicitly opt-in.
 - Fuzzy guidance rules that dynamically reorder plan priorities
 - Documentation and notebooks showcasing the full system pipeline
 - Continuous learning hooks with checkpoint management
+- Benchmark tracking utilities for SWE-bench, BigCodeBench, HumanEval, and
+  reliability gates (see [docs/benchmarking.md](docs/benchmarking.md))
 
 ## Repository Layout
 

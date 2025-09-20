@@ -79,10 +79,10 @@ class AutonomousAgent:
 
             test_outcome = self.testrunner.run()
             tests.append(test_outcome)
+            self._update_metrics(test_outcome)
             if not test_outcome.passed:
                 failures.append(f"Tests failed for '{step.description}'")
                 self._record_failure(step, "tests", test_outcome.output)
-                self._update_metrics(test_outcome)
                 continue
 
             validation = self.validator.validate(generation.code, generation.target_path)
