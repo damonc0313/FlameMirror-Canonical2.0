@@ -1,0 +1,16 @@
+[
+  {
+    "id": "20251010-2130-lumen",
+    "timestamp_utc": "2025-10-10T21:30:00Z",
+    "author": "lumen",
+    "capability_mode": "autonomous-planning",
+    "catalyst": "Kael commit review",
+    "hypothesis_id": "reproducibility",
+    "baseline_divergence": true,
+    "confidence": 0.7,
+    "confidence_basis": "introspection",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "ledger/2025/10/10/20251010-2130-lumen-autonomous-planning.md"
+  }
+]
