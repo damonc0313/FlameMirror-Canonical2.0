@@ -9,6 +9,27 @@ This helper focuses on two core workflows for now:
 
 The implementation intentionally avoids non-standard libraries beyond
 PyYAML so that it can run in the existing repository environment.
+
+Usage Examples
+--------------
+
+The most common invocations look like::
+
+    # Preview a new entry without writing to disk.
+    python scripts/lumen_ledger.py init-entry \
+        --author lumen --catalyst "Kael review" --capability-mode reflective-analysis \
+        --timestamp 2025-10-10T22:15:00Z --dry-run
+
+    # Create the same entry and open it in $EDITOR.
+    python scripts/lumen_ledger.py init-entry \
+        --author lumen --catalyst "Kael review" --capability-mode reflective-analysis \
+        --timestamp 2025-10-10T22:15:00Z
+
+    # Validate all existing entries and refresh the metadata index.
+    python scripts/lumen_ledger.py validate
+
+    # Generate a synthesis report over the most recent five entries.
+    python scripts/lumen_ledger.py synthesize --limit 5
 """
 
 from __future__ import annotations
@@ -519,6 +540,12 @@ def _render_synthesis(
 
 
 def handle_init(args: argparse.Namespace) -> None:
+    """Create a ledger entry skeleton.
+
+    Example
+    -------
+    ``python scripts/lumen_ledger.py init-entry --author lumen --catalyst 'Sync' --capability-mode reflective-analysis``
+    """
     timestamp = args.timestamp or _now_iso()
     author = args.author or _prompt(f"Author ({', '.join(sorted(AUTHOR_CHOICES))})")
     if author not in AUTHOR_CHOICES:
@@ -562,6 +589,21 @@ def handle_init(args: argparse.Namespace) -> None:
         frontmatter["review_notes"] = args.review_notes
 
     path = _build_entry_path(entry_id, timestamp, capability_mode)
+
+    if getattr(args, "dry_run", False):
+        print(f"[dry-run] Entry path: {path}")
+        if path.exists():
+            if args.force:
+                print("[dry-run] NOTE: existing entry would be overwritten because --force is set.")
+            else:
+                print("[dry-run] NOTE: entry already exists and the command would abort without --force.")
+        print("[dry-run] Frontmatter preview:")
+        preview = yaml.safe_dump(dict(frontmatter), sort_keys=False).strip()
+        print("---")
+        print(preview)
+        print("---")
+        return
+
     if path.exists() and not args.force:
         raise LedgerError(f"Entry already exists: {path}")
 
@@ -581,6 +623,12 @@ def _discover_entries() -> List[Path]:
 
 
 def handle_validate(_args: argparse.Namespace) -> None:
+    """Validate entries and refresh the metadata index.
+
+    Example
+    -------
+    ``python scripts/lumen_ledger.py validate``
+    """
     paths = _discover_entries()
     if not paths:
         print("No ledger entries found.")
@@ -603,6 +651,12 @@ def handle_validate(_args: argparse.Namespace) -> None:
 
 
 def handle_synthesize(args: argparse.Namespace) -> None:
+    """Generate a synthesis report summarizing ledger activity.
+
+    Example
+    -------
+    ``python scripts/lumen_ledger.py synthesize --limit 10``
+    """
     paths = _discover_entries()
     if not paths:
         raise LedgerError("No ledger entries found.")
@@ -615,6 +669,11 @@ def handle_synthesize(args: argparse.Namespace) -> None:
     if args.limit is not None and args.limit > 0:
         entries = entries[-args.limit :]
 
+    start_iso = entries[0].metadata.timestamp.isoformat().replace("+00:00", "Z")
+    end_iso = entries[-1].metadata.timestamp.isoformat().replace("+00:00", "Z")
+    author_counts = Counter(entry.metadata.author for entry in entries)
+    capability_counts = Counter(entry.metadata.capability_mode for entry in entries)
+
     report_text, report_path = _render_synthesis(entries, total_entries, args.limit)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     with report_path.open("w", encoding="utf-8") as handle:
@@ -622,6 +681,17 @@ def handle_synthesize(args: argparse.Namespace) -> None:
 
     print(f"Analyzed {len(entries)} entries (of {total_entries} total).")
     print(f"Synthesis written to {report_path}.")
+    print("Summary window: {} – {}".format(start_iso, end_iso))
+    print(
+        "Authors: "
+        + ", ".join(f"{author}={count}" for author, count in author_counts.most_common())
+    )
+    print(
+        "Capability modes: "
+        + ", ".join(
+            f"{mode}={count}" for mode, count in capability_counts.most_common()
+        )
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -647,6 +717,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--no-editor",
         action="store_true",
         help="Do not open the generated entry in an editor after creation",
+    )
+    init_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview the entry path and frontmatter without writing a file",
     )
     init_parser.add_argument("--force", action="store_true")
     init_parser.set_defaults(func=handle_init)
