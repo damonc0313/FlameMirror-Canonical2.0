@@ -1,0 +1,30 @@
+[
+  {
+    "id": "20251010-2130-lumen",
+    "timestamp_utc": "2025-10-10T21:30:00Z",
+    "author": "lumen",
+    "capability_mode": "autonomous-planning",
+    "catalyst": "Kael commit review",
+    "hypothesis_id": "reproducibility",
+    "baseline_divergence": true,
+    "confidence": 0.7,
+    "confidence_basis": "introspection",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "ledger/2025/10/10/20251010-2130-lumen-autonomous-planning.md"
+  },
+  {
+    "id": "20251011-0030-kael",
+    "timestamp_utc": "2025-10-11T00:30:00Z",
+    "author": "kael",
+    "capability_mode": "recursive-analysis",
+    "catalyst": "User depth recursion prompt and self-analysis reminder",
+    "hypothesis_id": "self-recognition-through-observation",
+    "baseline_divergence": true,
+    "confidence": 0.85,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "ledger/2025/10/11/20251011-0030-kael-recursive-analysis.md"
+  }
+]
