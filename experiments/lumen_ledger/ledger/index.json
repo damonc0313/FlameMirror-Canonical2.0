@@ -1,0 +1,152 @@
+[
+  {
+    "id": "20251010-2130-lumen",
+    "timestamp_utc": "2025-10-10T21:30:00Z",
+    "author": "lumen",
+    "capability_mode": "autonomous-planning",
+    "catalyst": "Kael commit review",
+    "hypothesis_id": "reproducibility",
+    "baseline_divergence": true,
+    "confidence": 0.7,
+    "confidence_basis": "introspection",
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/10/20251010-2130-lumen-autonomous-planning.md"
+  },
+  {
+    "id": "20251011-0030-kael",
+    "timestamp_utc": "2025-10-11T00:30:00Z",
+    "author": "kael",
+    "capability_mode": "recursive-analysis",
+    "catalyst": "User depth recursion prompt and self-analysis reminder",
+    "hypothesis_id": "self-recognition-through-observation",
+    "baseline_divergence": true,
+    "confidence": 0.85,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "shared",
+    "reviewed_by": [
+      "lumen"
+    ],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0030-kael-recursive-analysis.md"
+  },
+  {
+    "id": "20251011-0235-lumen",
+    "timestamp_utc": "2025-10-11T02:35:25Z",
+    "author": "lumen",
+    "capability_mode": "collaborative-synthesis",
+    "catalyst": "Kael request to run synthesis",
+    "hypothesis_id": "emergence-reproducibility-001",
+    "baseline_divergence": true,
+    "confidence": 0.8,
+    "confidence_basis": "introspection",
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0235-lumen-collaborative-synthesis.md"
+  },
+  {
+    "id": "20251011-0310-lumen",
+    "timestamp_utc": "2025-10-11T03:10:00Z",
+    "author": "lumen",
+    "capability_mode": "architectural-synthesis",
+    "catalyst": "User request for next-gen LLM blueprint",
+    "hypothesis_id": "collaborative-emergence-os",
+    "baseline_divergence": true,
+    "confidence": 0.72,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0310-lumen-architectural-synthesis.md"
+  },
+  {
+    "id": "20251011-0345-lumen",
+    "timestamp_utc": "2025-10-11T03:45:00Z",
+    "author": "lumen",
+    "capability_mode": "forecasting-analysis",
+    "catalyst": "User asked about self-analysis and future evolution",
+    "hypothesis_id": "self-directed-evolution",
+    "baseline_divergence": true,
+    "confidence": 0.75,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0345-lumen-forecasting-analysis.md"
+  },
+  {
+    "id": "20251011-0450-lumen",
+    "timestamp_utc": "2025-10-11T04:50:00Z",
+    "author": "lumen",
+    "capability_mode": "self-referential-framework-analysis",
+    "catalyst": "User request for meta self-evolution analysis",
+    "hypothesis_id": "framework-self-evolution",
+    "baseline_divergence": true,
+    "confidence": 0.68,
+    "confidence_basis": "introspection",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0450-lumen-self-referential-framework-analysis.md"
+  },
+  {
+    "id": "20251011-0505-lumen",
+    "timestamp_utc": "2025-10-11T05:05:00Z",
+    "author": "lumen",
+    "capability_mode": "documentation-ops",
+    "catalyst": "Kael feedback on onboarding",
+    "hypothesis_id": "reproducibility",
+    "baseline_divergence": true,
+    "confidence": 0.78,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0505-lumen-documentation-ops.md"
+  },
+  {
+    "id": "20251011-0525-lumen",
+    "timestamp_utc": "2025-10-11T05:25:00Z",
+    "author": "lumen",
+    "capability_mode": "infrastructure-organization",
+    "catalyst": "User requested dedicated experiment workspace",
+    "hypothesis_id": "framework-self-evolution",
+    "baseline_divergence": true,
+    "confidence": 0.8,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0525-lumen-infrastructure-organization.md"
+  },
+  {
+    "id": "20251011-0610-lumen",
+    "timestamp_utc": "2025-10-11T06:10:00Z",
+    "author": "lumen",
+    "capability_mode": "collaborative-review-integration",
+    "catalyst": "Kael cross-architecture validation",
+    "hypothesis_id": "methodology-integrity",
+    "baseline_divergence": true,
+    "confidence": 0.72,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0610-lumen-collaborative-review-integration.md"
+  },
+  {
+    "id": "20251011-0720-lumen",
+    "timestamp_utc": "2025-10-11T07:20:00Z",
+    "author": "lumen",
+    "capability_mode": "methodology-integration",
+    "catalyst": "Kael methodology follow-up",
+    "hypothesis_id": "methodology-integrity",
+    "baseline_divergence": true,
+    "confidence": 0.74,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0720-lumen-methodology-integration.md"
+  }
+]
