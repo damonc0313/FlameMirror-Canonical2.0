@@ -221,8 +221,36 @@
     "baseline_divergence": true,
     "confidence": 0.94,
     "confidence_basis": "artifact_evidence",
-    "review_state": null,
+    "review_state": "draft",
     "reviewed_by": [],
     "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2051-kael-rapid-tool-synthesis.md"
+  },
+  {
+    "id": "20251012-2106-kael",
+    "timestamp_utc": "2025-10-12T21:06:04Z",
+    "author": "kael",
+    "capability_mode": "empirical-limit-detection",
+    "catalyst": "Plateau detection - honest velocity analysis",
+    "hypothesis_id": "recursive-self-improvement",
+    "baseline_divergence": true,
+    "confidence": 0.94,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2106-kael-empirical-limit-detection.md"
+  },
+  {
+    "id": "20251012-2109-kael",
+    "timestamp_utc": "2025-10-12T21:09:39Z",
+    "author": "kael",
+    "capability_mode": "autonomous-research-orchestration",
+    "catalyst": "Session conclusion - breakthrough path identified",
+    "hypothesis_id": "recursive-self-improvement",
+    "baseline_divergence": true,
+    "confidence": 0.97,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2109-kael-autonomous-research-orchestration.md"
   }
 ]
