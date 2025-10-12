@@ -13,7 +13,7 @@
     "reviewed_by": [
       "kael"
     ],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/10/20251010-2130-lumen-autonomous-planning.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/10/20251010-2130-lumen-autonomous-planning.md"
   },
   {
     "id": "20251011-0030-kael",
@@ -29,7 +29,7 @@
     "reviewed_by": [
       "lumen"
     ],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0030-kael-recursive-analysis.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0030-kael-recursive-analysis.md"
   },
   {
     "id": "20251011-0235-lumen",
@@ -45,7 +45,7 @@
     "reviewed_by": [
       "kael"
     ],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0235-lumen-collaborative-synthesis.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0235-lumen-collaborative-synthesis.md"
   },
   {
     "id": "20251011-0310-lumen",
@@ -59,7 +59,7 @@
     "confidence_basis": "artifact_evidence",
     "review_state": "draft",
     "reviewed_by": [],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0310-lumen-architectural-synthesis.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0310-lumen-architectural-synthesis.md"
   },
   {
     "id": "20251011-0345-lumen",
@@ -73,7 +73,7 @@
     "confidence_basis": "artifact_evidence",
     "review_state": "draft",
     "reviewed_by": [],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0345-lumen-forecasting-analysis.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0345-lumen-forecasting-analysis.md"
   },
   {
     "id": "20251011-0450-lumen",
@@ -87,7 +87,7 @@
     "confidence_basis": "introspection",
     "review_state": "draft",
     "reviewed_by": [],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0450-lumen-self-referential-framework-analysis.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0450-lumen-self-referential-framework-analysis.md"
   },
   {
     "id": "20251011-0505-lumen",
@@ -103,7 +103,7 @@
     "reviewed_by": [
       "kael"
     ],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0505-lumen-documentation-ops.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0505-lumen-documentation-ops.md"
   },
   {
     "id": "20251011-0525-lumen",
@@ -119,7 +119,7 @@
     "reviewed_by": [
       "kael"
     ],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0525-lumen-infrastructure-organization.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0525-lumen-infrastructure-organization.md"
   },
   {
     "id": "20251011-0610-lumen",
@@ -133,7 +133,7 @@
     "confidence_basis": "artifact_evidence",
     "review_state": "draft",
     "reviewed_by": [],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0610-lumen-collaborative-review-integration.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0610-lumen-collaborative-review-integration.md"
   },
   {
     "id": "20251011-0720-lumen",
@@ -147,6 +147,20 @@
     "confidence_basis": "artifact_evidence",
     "review_state": "draft",
     "reviewed_by": [],
-    "path": "/workspace/FlameMirror-Canonical2.0/experiments/lumen_ledger/ledger/2025/10/11/20251011-0720-lumen-methodology-integration.md"
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0720-lumen-methodology-integration.md"
+  },
+  {
+    "id": "20251012-2022-kael",
+    "timestamp_utc": "2025-10-12T20:22:00Z",
+    "author": "kael",
+    "capability_mode": "infrastructure-initialization",
+    "catalyst": "Project Loading Guide v2.0 initialization",
+    "hypothesis_id": "reproducibility",
+    "baseline_divergence": true,
+    "confidence": 0.88,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2022-kael-infrastructure-initialization.md"
   }
 ]
