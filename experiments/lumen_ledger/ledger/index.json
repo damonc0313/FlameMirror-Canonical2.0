@@ -57,8 +57,10 @@
     "baseline_divergence": true,
     "confidence": 0.72,
     "confidence_basis": "artifact_evidence",
-    "review_state": "draft",
-    "reviewed_by": [],
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
     "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0310-lumen-architectural-synthesis.md"
   },
   {
@@ -131,8 +133,10 @@
     "baseline_divergence": true,
     "confidence": 0.72,
     "confidence_basis": "artifact_evidence",
-    "review_state": "draft",
-    "reviewed_by": [],
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
     "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0610-lumen-collaborative-review-integration.md"
   },
   {
@@ -145,8 +149,10 @@
     "baseline_divergence": true,
     "confidence": 0.74,
     "confidence_basis": "artifact_evidence",
-    "review_state": "draft",
-    "reviewed_by": [],
+    "review_state": "shared",
+    "reviewed_by": [
+      "kael"
+    ],
     "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/11/20251011-0720-lumen-methodology-integration.md"
   },
   {
