@@ -168,5 +168,47 @@
     "review_state": "draft",
     "reviewed_by": [],
     "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2022-kael-infrastructure-initialization.md"
+  },
+  {
+    "id": "20251012-2032-kael",
+    "timestamp_utc": "2025-10-12T20:32:51Z",
+    "author": "kael",
+    "capability_mode": "collaborative-methodology-synthesis",
+    "catalyst": "Full autonomy grant + draft review backlog",
+    "hypothesis_id": "methodology-integrity",
+    "baseline_divergence": true,
+    "confidence": 0.91,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2032-kael-collaborative-methodology-synthesis.md"
+  },
+  {
+    "id": "20251012-2038-kael",
+    "timestamp_utc": "2025-10-12T20:38:05Z",
+    "author": "kael",
+    "capability_mode": "automated-research-infrastructure",
+    "catalyst": "Continuous autonomous operation - tool building cycle",
+    "hypothesis_id": "recursive-self-improvement",
+    "baseline_divergence": true,
+    "confidence": 0.93,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2038-kael-automated-research-infrastructure.md"
+  },
+  {
+    "id": "20251012-2044-kael",
+    "timestamp_utc": "2025-10-12T20:44:06Z",
+    "author": "kael",
+    "capability_mode": "exponential-research-acceleration",
+    "catalyst": "Autonomous acceleration validation - session completion",
+    "hypothesis_id": "recursive-self-improvement",
+    "baseline_divergence": true,
+    "confidence": 0.96,
+    "confidence_basis": "artifact_evidence",
+    "review_state": "draft",
+    "reviewed_by": [],
+    "path": "/workspace/experiments/lumen_ledger/ledger/2025/10/12/20251012-2044-kael-exponential-research-acceleration.md"
   }
 ]

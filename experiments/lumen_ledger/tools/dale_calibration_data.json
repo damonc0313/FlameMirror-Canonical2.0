@@ -1,0 +1,20 @@
+{
+  "global_offset": -0.094,
+  "calibrations": [
+    {
+      "capability": "predictive-enhancement",
+      "predictions": [
+        0.75,
+        0.72
+      ],
+      "outcomes": [
+        false,
+        true
+      ],
+      "offset": -0.094,
+      "sample_count": 2,
+      "last_updated": "2025-10-12T20:40:19.206091Z"
+    }
+  ],
+  "updated_at": "2025-10-12T20:40:19.207095Z"
+}
