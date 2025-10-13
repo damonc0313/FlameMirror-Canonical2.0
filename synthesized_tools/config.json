@@ -1,0 +1,6 @@
+{
+  "database_url": "postgresql://localhost/db",
+  "api_key": "test-key-123",
+  "max_connections": 10,
+  "timeout": 30
+}
