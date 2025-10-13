@@ -1,0 +1,56 @@
+{
+  "history": [
+    {
+      "iteration": 1,
+      "tool": "event_emitter",
+      "lines": 91,
+      "sophistication": 0.2,
+      "target_lines": 80
+    },
+    {
+      "iteration": 2,
+      "tool": "event_bus",
+      "lines": 32,
+      "sophistication": 0.2,
+      "target_lines": 120
+    },
+    {
+      "iteration": 3,
+      "tool": "workflow_engine",
+      "lines": 124,
+      "sophistication": 0.5499999999999999,
+      "target_lines": 180
+    },
+    {
+      "iteration": 4,
+      "tool": "task_scheduler",
+      "lines": 130,
+      "sophistication": 0.6499999999999999,
+      "target_lines": 150
+    },
+    {
+      "iteration": 5,
+      "tool": "distributed_lock",
+      "lines": 104,
+      "sophistication": 0.44999999999999996,
+      "target_lines": 100
+    }
+  ],
+  "summary": {
+    "first": {
+      "iteration": 1,
+      "tool": "event_emitter",
+      "lines": 91,
+      "sophistication": 0.2,
+      "target_lines": 80
+    },
+    "last": {
+      "iteration": 5,
+      "tool": "distributed_lock",
+      "lines": 104,
+      "sophistication": 0.44999999999999996,
+      "target_lines": 100
+    },
+    "improving": true
+  }
+}
