@@ -1,0 +1,10 @@
+{
+  "mode": "autonomous",
+  "auto_enhance": true,
+  "enhancement_frequency": "as_needed",
+  "min_quality": 0.8,
+  "max_tools_per_cycle": 10,
+  "recursive_depth": 3,
+  "enabled": true,
+  "created": "2025-10-13T04:45:39.315174"
+}

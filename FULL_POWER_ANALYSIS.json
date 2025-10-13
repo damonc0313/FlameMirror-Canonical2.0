@@ -1,0 +1,124 @@
+{
+  "analyzed_files": 2927,
+  "architecture": {
+    "clusters": 19,
+    "edges": 2792,
+    "bottlenecks": 0
+  },
+  "insights": {
+    "scale": {
+      "total_files": 2927,
+      "total_lines": 562857,
+      "total_classes": 3207,
+      "total_functions": 44141,
+      "avg_complexity": 28.370345063204645,
+      "avg_quality": 0.4017082336863684
+    },
+    "complex_files": [
+      {
+        "file": "massive_scale_codebase/infrastructure/distributed_runtime.py",
+        "complexity": 9994
+      },
+      {
+        "file": "massive_scale_codebase/infrastructure/parameter_manager.py",
+        "complexity": 5994
+      },
+      {
+        "file": "codex_reflective_kernel.py",
+        "complexity": 304
+      },
+      {
+        "file": "experiments/lumen_ledger/tools/advanced_consensus_engine.py",
+        "complexity": 246
+      },
+      {
+        "file": "experiments/lumen_ledger/tools/lumen_ledger.py",
+        "complexity": 204
+      },
+      {
+        "file": "experiments/lumen_ledger/tools/advanced_graph_algorithms.py",
+        "complexity": 176
+      },
+      {
+        "file": "legacy/phase2/superhuman_coder_phase2_core.py",
+        "complexity": 161
+      },
+      {
+        "file": "experiments/lumen_ledger/tools/distributed_research_framework.py",
+        "complexity": 154
+      },
+      {
+        "file": "advanced_evolutionary_algorithms.py",
+        "complexity": 152
+      },
+      {
+        "file": "theoretical_foundations.py",
+        "complexity": 139
+      }
+    ],
+    "low_quality_count": 697,
+    "top_imports": [
+      {
+        "import": "typing",
+        "count": 2170
+      },
+      {
+        "import": "dataclasses",
+        "count": 2133
+      },
+      {
+        "import": "json",
+        "count": 2103
+      },
+      {
+        "import": "time",
+        "count": 2076
+      },
+      {
+        "import": "collections",
+        "count": 2057
+      },
+      {
+        "import": "math",
+        "count": 2020
+      },
+      {
+        "import": "datetime",
+        "count": 1099
+      },
+      {
+        "import": "pathlib",
+        "count": 116
+      },
+      {
+        "import": "sys",
+        "count": 41
+      },
+      {
+        "import": "__future__",
+        "count": 38
+      },
+      {
+        "import": "logging",
+        "count": 37
+      },
+      {
+        "import": "threading",
+        "count": 29
+      },
+      {
+        "import": "hashlib",
+        "count": 28
+      },
+      {
+        "import": "enum",
+        "count": 27
+      },
+      {
+        "import": "random",
+        "count": 26
+      }
+    ],
+    "health_score": 0.6554253501879058
+  }
+}
