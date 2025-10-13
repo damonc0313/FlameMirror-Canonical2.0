@@ -1,0 +1,201 @@
+{
+  "generated_at": "2025-10-13T04:36:38.507488",
+  "count": 20,
+  "metrics": {
+    "total_tools": 20,
+    "total_lines": 1020,
+    "total_time": 0.001753091812133789,
+    "avg_quality": 0.9,
+    "lines_per_second": 581829.19624643,
+    "lines_per_hour": 2094585106.487148,
+    "tools_per_second": 11408.415612675099,
+    "tools_per_hour": 41070296.205630355,
+    "lines_acceleration": 20945851.06487148,
+    "tools_acceleration": 82140592.41126071,
+    "quality_weighted_lines_accel": 18851265.95838433,
+    "quality_weighted_tools_accel": 73926533.17013463,
+    "production_grade_rate": 1.0
+  },
+  "tools": [
+    {
+      "name": "cache_manager_000.py",
+      "category": "production",
+      "lines": 40,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 0.00010204315185546875,
+      "file_path": "exponential_tools_batch/cache_manager_000.py"
+    },
+    {
+      "name": "retry_handler_001.py",
+      "category": "production",
+      "lines": 54,
+      "quality_score": 0.8,
+      "production_grade": true,
+      "generation_time": 0.00010371208190917969,
+      "file_path": "exponential_tools_batch/retry_handler_001.py"
+    },
+    {
+      "name": "data_validator_002.py",
+      "category": "production",
+      "lines": 53,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 9.942054748535156e-05,
+      "file_path": "exponential_tools_batch/data_validator_002.py"
+    },
+    {
+      "name": "rate_limiter_003.py",
+      "category": "production",
+      "lines": 47,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 8.654594421386719e-05,
+      "file_path": "exponential_tools_batch/rate_limiter_003.py"
+    },
+    {
+      "name": "batch_processor_004.py",
+      "category": "production",
+      "lines": 61,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 0.00010466575622558594,
+      "file_path": "exponential_tools_batch/batch_processor_004.py"
+    },
+    {
+      "name": "cache_manager_005.py",
+      "category": "production",
+      "lines": 40,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 6.532669067382812e-05,
+      "file_path": "exponential_tools_batch/cache_manager_005.py"
+    },
+    {
+      "name": "retry_handler_006.py",
+      "category": "production",
+      "lines": 54,
+      "quality_score": 0.8,
+      "production_grade": true,
+      "generation_time": 8.177757263183594e-05,
+      "file_path": "exponential_tools_batch/retry_handler_006.py"
+    },
+    {
+      "name": "data_validator_007.py",
+      "category": "production",
+      "lines": 53,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 0.0001239776611328125,
+      "file_path": "exponential_tools_batch/data_validator_007.py"
+    },
+    {
+      "name": "rate_limiter_008.py",
+      "category": "production",
+      "lines": 47,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 7.390975952148438e-05,
+      "file_path": "exponential_tools_batch/rate_limiter_008.py"
+    },
+    {
+      "name": "batch_processor_009.py",
+      "category": "production",
+      "lines": 61,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 9.036064147949219e-05,
+      "file_path": "exponential_tools_batch/batch_processor_009.py"
+    },
+    {
+      "name": "cache_manager_010.py",
+      "category": "production",
+      "lines": 40,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 6.651878356933594e-05,
+      "file_path": "exponential_tools_batch/cache_manager_010.py"
+    },
+    {
+      "name": "retry_handler_011.py",
+      "category": "production",
+      "lines": 54,
+      "quality_score": 0.8,
+      "production_grade": true,
+      "generation_time": 8.630752563476562e-05,
+      "file_path": "exponential_tools_batch/retry_handler_011.py"
+    },
+    {
+      "name": "data_validator_012.py",
+      "category": "production",
+      "lines": 53,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 8.869171142578125e-05,
+      "file_path": "exponential_tools_batch/data_validator_012.py"
+    },
+    {
+      "name": "rate_limiter_013.py",
+      "category": "production",
+      "lines": 47,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 9.369850158691406e-05,
+      "file_path": "exponential_tools_batch/rate_limiter_013.py"
+    },
+    {
+      "name": "batch_processor_014.py",
+      "category": "production",
+      "lines": 61,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 9.322166442871094e-05,
+      "file_path": "exponential_tools_batch/batch_processor_014.py"
+    },
+    {
+      "name": "cache_manager_015.py",
+      "category": "production",
+      "lines": 40,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 6.151199340820312e-05,
+      "file_path": "exponential_tools_batch/cache_manager_015.py"
+    },
+    {
+      "name": "retry_handler_016.py",
+      "category": "production",
+      "lines": 54,
+      "quality_score": 0.8,
+      "production_grade": true,
+      "generation_time": 8.20159912109375e-05,
+      "file_path": "exponential_tools_batch/retry_handler_016.py"
+    },
+    {
+      "name": "data_validator_017.py",
+      "category": "production",
+      "lines": 53,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 8.0108642578125e-05,
+      "file_path": "exponential_tools_batch/data_validator_017.py"
+    },
+    {
+      "name": "rate_limiter_018.py",
+      "category": "production",
+      "lines": 47,
+      "quality_score": 0.8500000000000001,
+      "production_grade": true,
+      "generation_time": 7.724761962890625e-05,
+      "file_path": "exponential_tools_batch/rate_limiter_018.py"
+    },
+    {
+      "name": "batch_processor_019.py",
+      "category": "production",
+      "lines": 61,
+      "quality_score": 1.0,
+      "production_grade": true,
+      "generation_time": 9.202957153320312e-05,
+      "file_path": "exponential_tools_batch/batch_processor_019.py"
+    }
+  ]
+}
